@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALBERTO CLOCKS | Shopping Cart</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #203729;
+    background: linear-gradient(135deg, #ffffff, #e8f5eb);
+    min-height: 100vh;
+}
+
+header {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px solid #d5e6d8;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #244b34;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #244b34;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #a18442;
+}
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.hero p {
+    letter-spacing: 4px;
+    color: #728775;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(35px, 5vw, 55px);
+    font-weight: normal;
+}
+
+.hero h1 span {
+    color: #8aab91;
+}
+
+.cart-container {
+    max-width: 1100px;
+    width: 90%;
+    margin: 0 auto 70px;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.cart-items,
+.summary {
+    background: rgba(255,255,255,.9);
+    border: 1px solid #dce9de;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(30,70,40,.06);
+}
+
+.cart-items h2,
+.summary h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    margin-bottom: 22px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid #e5eee6;
+    animation: appear .4s ease;
+}
+
+.cart-item img {
+    width: 110px;
+    height: 120px;
+    object-fit: contain;
+    background: #f3f8f3;
+    border-radius: 8px;
+}
+
+.item-info h3 {
+    font-family: Georgia, serif;
+    margin: 5px 0 8px;
+}
+
+.item-info p {
+    font-size: 13px;
+    color: #718073;
+    margin-bottom: 10px;
+}
+
+.item-price {
+    color: #856b34;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.qty-btn {
+    border: 1px solid #cbdccc;
+    background: #f5faf5;
+    color: #244b34;
+    padding: 5px 11px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity {
+    min-width: 18px;
+    text-align: center;
+}
+
+.remove-btn {
+    border: none;
+    background: transparent;
+    color: #a04444;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 17px 0;
+    color: #596b5c;
+    font-size: 14px;
+}
+
+.summary-total {
+    border-top: 1px solid #dce9de;
+    padding-top: 20px;
+    margin-top: 22px;
+    font-size: 18px;
+    color: #244b34;
+    font-weight: bold;
+}
+
+.checkout-btn,
+.shop-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #244b34;
+    background: #244b34;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.checkout-btn:hover,
+.shop-btn:hover {
+    background: #8bb897;
+    border-color: #8bb897;
+    color: #183b26;
+    transform: translateY(-2px);
+}
+
+.shop-btn {
+    background: white;
+    color: #244b34;
+}
+
+.clear-btn {
+    border: none;
+    background: transparent;
+    color: #a04444;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 40px 10px;
+}
+
+.empty-cart .icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.empty-cart p {
+    color: #718073;
+    margin: 12px 0 20px;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #ffffffb8;
+    color: #718073;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 750px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-items,
+    .summary {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cart-item {
+        grid-template-columns: 85px 1fr;
+        gap: 12px;
+    }
+
+    .cart-item img {
+        width: 85px;
+        height: 100px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">ALBERTO</a>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="about.html">ABOUT</a>
+        <a href="login.html">ACCOUNT</a>
+        <a href="card.html">CART 🛒</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <p>ALBERTO CLOCKS · YOUR SELECTION</p>
+    <h1>Your Shopping <span>Cart.</span></h1>
+</section>
+
+<main class="cart-container">
+    <div class="cart-layout">
+
+        <section class="cart-items">
+            <h2>Your Watches (<span id="itemCount">0</span>)</h2>
+            <div id="cartList"></div>
+        </section>
+
+        <aside class="summary">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Items subtotal</span>
+                <span id="subtotal">PKR 0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span id="delivery">Calculated at checkout</span>
+            </div>
+
+            <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="total">PKR 0</span>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">
+                PROCEED TO CHECKOUT →
+            </button>
+
+            <a href="allcollection.html" class="shop-btn">
+                CONTINUE SHOPPING
+            </a>
+
+            <button class="clear-btn" onclick="clearCart()">
+                CLEAR ENTIRE CART
+            </button>
+        </aside>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 ALBERTO CLOCKS · TIMELESS BY DESIGN
+</footer>
+
+<script>
+function getCart() {
+    try {
+        const data = JSON.parse(localStorage.getItem("albertoCart"));
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    localStorage.setItem("albertoCart", JSON.stringify(cart));
+}
+
+function money(amount) {
+    return "PKR " + Number(amount).toLocaleString("en-PK");
+}
+
+function renderCart() {
+    const cart = getCart();
+    const list = document.getElementById("cartList");
+
+    list.innerHTML = "";
+
+    let subtotal = 0;
+    let count = 0;
+
+    if (cart.length === 0) {
+        list.innerHTML = `
+            <div class="empty-cart">
+                <div class="icon">🛍️</div>
+                <h3>Your cart is waiting</h3>
+                <p>You haven't added any watches yet.<br>
+                Discover your next timeless piece.</p>
+                <a href="allcollection.html" class="shop-btn">
+                    EXPLORE COLLECTION
+                </a>
+            </div>
+        `;
+    }
+
+    cart.forEach((item, index) => {
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        const price = Number(item.price) || 0;
+
+        subtotal += price * quantity;
+        count += quantity;
+
+        const card = document.createElement("article");
+        card.className = "cart-item";
+
+        const image = document.createElement("img");
+        image.src = item.image || "";
+        image.alt = item.name || "ALBERTO watch";
+        image.onerror = function() {
+            this.style.visibility = "hidden";
+        };
+
+        const info = document.createElement("div");
+        info.className = "item-info";
+
+        const name = document.createElement("h3");
+        name.textContent = item.name || "ALBERTO Watch";
+
+        const category = document.createElement("p");
+        category.textContent = item.category || "Luxury Watch";
+
+        const priceText = document.createElement("div");
+        priceText.className = "item-price";
+        priceText.textContent = money(price);
+
+        const actions = document.createElement("div");
+        actions.className = "item-actions";
+
+        const minus = document.createElement("button");
+        minus.className = "qty-btn";
+        minus.textContent = "−";
+        minus.setAttribute("aria-label", "Decrease quantity");
+        minus.onclick = () => changeQuantity(index, -1);
+
+        const qty = document.createElement("span");
+        qty.className = "quantity";
+        qty.textContent = quantity;
+
+        const plus = document.createElement("button");
+        plus.className = "qty-btn";
+        plus.textContent = "+";
+        plus.setAttribute("aria-label", "Increase quantity");
+        plus.onclick = () => changeQuantity(index, 1);
+
+        const remove = document.createElement("button");
+        remove.className = "remove-btn";
+        remove.textContent = "REMOVE";
+        remove.onclick = () => removeItem(index);
+
+        actions.append(minus, qty, plus, remove);
+        info.append(name, category, priceText, actions);
+        card.append(image, info);
+        list.appendChild(card);
+    });
+
+    document.getElementById("itemCount").textContent = count;
+    document.getElementById("subtotal").textContent = money(subtotal);
+    document.getElementById("total").textContent = money(subtotal);
+    document.getElementById("delivery").textContent =
+        cart.length ? "Calculated at checkout" : "—";
+}
+
+function changeQuantity(index, change) {
+    const cart = getCart();
+
+    if (!cart[index]) return;
+
+    cart[index].quantity = Math.max(
+        1,
+        (Number(cart[index].quantity) || 1) + change
+    );
+
+    saveCart(cart);
+    renderCart();
+}
+
+function removeItem(index) {
+    const cart = getCart();
+    cart.splice(index, 1);
+    saveCart(cart);
+    renderCart();
+}
+
+function clearCart() {
+    if (!getCart().length) return;
+
+    if (confirm("Remove all watches from your cart?")) {
+        saveCart([]);
+        renderCart();
+    }
+}
+
+function checkout() {
+    if (getCart().length === 0) {
+        alert("Your cart is empty. Please add a watch first.");
+        return;
+    }
+
+    // Opens your existing checkout page.
+    window.location.href = "checkout.html";
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

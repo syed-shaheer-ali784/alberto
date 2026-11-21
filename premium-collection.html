@@ -1,0 +1,1102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Collection | ALBERTO CLOCKS</title>
+
+<style>
+:root {
+    --green: #557b61;
+    --dark-green: #294a35;
+    --light-green: #edf5ee;
+    --pale-green: #f7faf7;
+    --white: #ffffff;
+    --text: #28382c;
+    --muted: #748077;
+    --border: #dce8dd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--pale-green);
+    color: var(--text);
+}
+
+/* HEADER */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 82px;
+    padding: 15px 6%;
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--dark-green);
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.logo span {
+    display: block;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 7px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 11px;
+    letter-spacing: 1.4px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--green);
+}
+
+/* LUXURY HERO BACKGROUND */
+
+.hero {
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(242,248,242,0.94),
+            rgba(235,244,236,0.78),
+            rgba(242,248,242,0.55)
+        ),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx9wIcZH1KcI9alVdyjcuGMJ01cDDf0Dcy35nVo6OGvQ&s=10")
+        center 45% / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1s ease both;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    color: #263c2c;
+}
+
+.hero h1 span {
+    color: var(--green);
+    font-style: italic;
+}
+
+.hero p {
+    max-width: 590px;
+    margin: 0 auto 30px;
+    color: #48594c;
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 15px 29px;
+    border: 1px solid var(--dark-green);
+    background: var(--dark-green);
+    color: white;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: var(--dark-green);
+    transform: translateY(-3px);
+}
+
+/* INTRODUCTION */
+
+.collection {
+    padding: 85px 6%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 38px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: clamp(32px, 5vw, 48px);
+    color: var(--dark-green);
+}
+
+.section-heading h2 span {
+    color: var(--green);
+    font-style: italic;
+}
+
+.section-heading p {
+    margin-top: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+/* SEARCH AND FILTER */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 0 auto 42px;
+}
+
+.filters input,
+.filters select {
+    width: min(100%, 300px);
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    border-radius: 4px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(85,123,97,0.10);
+}
+
+/* WATCH GRID */
+
+.watch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+.watch-card {
+    min-width: 0;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(37,67,45,0.045);
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+    animation: fadeUp 0.7s ease both;
+}
+
+.watch-card:hover {
+    transform: translateY(-8px);
+    border-color: #abc6b0;
+    box-shadow: 0 18px 38px rgba(37,67,45,0.12);
+}
+
+.watch-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+    background: var(--light-green);
+}
+
+.watch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.65s ease;
+}
+
+.watch-card:hover .watch-image img {
+    transform: scale(1.07);
+}
+
+.watch-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 7px 10px;
+    background: rgba(255,255,255,0.94);
+    color: var(--dark-green);
+    border: 1px solid var(--border);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.watch-info {
+    padding: 23px 19px;
+}
+
+.watch-category {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 11px;
+}
+
+.watch-info h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    font-weight: normal;
+    color: var(--dark-green);
+    margin-bottom: 11px;
+}
+
+.watch-info > p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.75;
+    min-height: 46px;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--dark-green);
+    margin: 18px 0;
+}
+
+.card-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.card-buttons button {
+    width: 100%;
+    padding: 13px 10px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.add-btn {
+    color: white;
+    background: var(--dark-green);
+    border: 1px solid var(--dark-green);
+}
+
+.add-btn:hover {
+    color: var(--dark-green);
+    background: var(--light-green);
+}
+
+.learn-btn {
+    color: var(--dark-green);
+    background: white;
+    border: 1px solid #b8cdbb;
+}
+
+.learn-btn:hover {
+    background: var(--light-green);
+    border-color: var(--green);
+}
+
+/* DETAILS OPEN BELOW THE SAME CARD */
+
+.watch-details {
+    display: none;
+    padding: 20px 18px 23px;
+    background: #f0f7f1;
+    border-top: 1px solid #d6e6d8;
+    animation: detailsOpen 0.45s ease both;
+}
+
+.watch-details.open {
+    display: block;
+}
+
+.watch-details h4 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: normal;
+    color: var(--dark-green);
+    margin-bottom: 12px;
+}
+
+.watch-details p {
+    color: #617066;
+    font-size: 13px;
+    line-height: 1.85;
+    margin-bottom: 12px;
+}
+
+.watch-details ul {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.watch-details li {
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 7px 0;
+    border-bottom: 1px solid #dce9de;
+    color: #46594a;
+}
+
+.watch-details li::before {
+    content: "✓ ";
+    color: var(--green);
+    font-weight: bold;
+}
+
+.close-details {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #b8cdbb;
+    color: var(--dark-green);
+    background: white;
+    cursor: pointer;
+    margin-top: 7px;
+    transition: 0.3s;
+}
+
+.close-details:hover {
+    background: var(--dark-green);
+    color: white;
+}
+
+/* EMPTY SEARCH */
+
+.empty-message {
+    display: none;
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--muted);
+    padding: 45px 15px;
+    background: white;
+    border: 1px solid var(--border);
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 500;
+    max-width: calc(100% - 44px);
+    padding: 17px 22px;
+    background: var(--dark-green);
+    color: white;
+    border-left: 4px solid #a7c9ae;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: 0.35s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 38px 6%;
+    background: white;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+footer strong {
+    color: var(--dark-green);
+    font-family: Georgia, serif;
+    font-size: 21px;
+    letter-spacing: 4px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes detailsOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1100px) {
+    .watch-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 780px) {
+    .topbar {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .hero {
+        min-height: 480px;
+    }
+
+    .watch-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .collection {
+        padding: 60px 4%;
+    }
+
+    .watch-image {
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 23px;
+    }
+
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .watch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .watch-image {
+        height: 300px;
+    }
+
+    .watch-info {
+        padding: 23px;
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 55px 18px;
+    }
+
+    .filters input,
+    .filters select {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+    <a href="index.html" class="logo">
+        ALBERTO
+        <span>C L O C K S</span>
+    </a>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="about.html">ABOUT</a>
+        <a href="login.html">ACCOUNT</a>
+        <a href="card.html">CART 🛒 <span id="cart-count">0</span></a>
+    </nav>
+</header>
+
+<!-- HERO WITH LUXURY WATCH BACKGROUND -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">THE ART OF FINE WATCHMAKING</div>
+
+        <h1>Beyond Time.<br><span>Beyond Ordinary.</span></h1>
+
+        <p>
+            Discover a refined collection where timeless elegance
+            meets modern design. Find the watch that expresses
+            your personality and makes every moment memorable.
+        </p>
+
+        <a href="#collection" class="primary-btn">
+            EXPLORE COLLECTION
+        </a>
+    </div>
+</section>
+
+<!-- COLLECTION -->
+<main class="collection" id="collection">
+
+    <div class="section-heading">
+        <div class="eyebrow">MADE FOR YOUR MOMENTS</div>
+        <h2>Premium <span>Collection</span></h2>
+        <p>
+            Explore distinctive watch styles designed for people
+            who appreciate elegance, detail and timeless beauty.
+        </p>
+    </div>
+
+    <!-- SEARCH AND FILTER -->
+    <div class="filters">
+        <input
+            type="search"
+            id="search"
+            placeholder="Search for a watch..."
+            aria-label="Search watches"
+        >
+
+        <select id="category" aria-label="Filter by collection">
+            <option value="all">All Collections</option>
+            <option value="Classic">Classic Collection</option>
+            <option value="Luxury">Luxury Collection</option>
+            <option value="Sport">Sport Collection</option>
+            <option value="Modern">Modern Collection</option>
+        </select>
+    </div>
+
+    <!-- WATCH CARDS ARE INSERTED HERE -->
+    <div class="watch-grid" id="watch-grid"></div>
+
+</main>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status">
+    Watch added to cart!
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <strong>ALBERTO CLOCKS</strong>
+    <p>Beyond Time. Beyond Ordinary.</p>
+    <p>© 2026 ALBERTO CLOCKS. All rights reserved.</p>
+</footer>
+
+<script>
+/*
+  All watch pictures are placed in HTML <img> tags
+  inside each card's HTML template below.
+*/
+
+const watches = [
+    {
+        id: 1,
+        name: "The Heritage",
+        category: "Classic",
+        price: 18500,
+        label: "BESTSELLER",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUCtnebTWHqiN-m_JcPpwIi2gKPCxltvi-tbTSKusdNzRobZqKKr7iOrM&s=10",
+        description: "A timeless design for elegant everyday moments.",
+        story: "The Heritage celebrates classic styling and understated elegance. Its design is inspired by the enduring appeal of traditional timepieces.",
+        features: ["Classic-inspired design", "Elegant everyday styling", "Part of the Heritage collection"]
+    },
+    {
+        id: 2,
+        name: "Midnight Noir",
+        category: "Luxury",
+        price: 24500,
+        label: "SIGNATURE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJgqqI4yyVzUcQSsMHgAoTXQWtUAEBmUEG7yY44pVRHw&s",
+        description: "A bold dark look with a sophisticated character.",
+        story: "Midnight Noir is designed for those who prefer a confident, understated appearance with a modern luxury feel.",
+        features: ["Dark-inspired styling", "Modern luxury look", "Statement design"]
+    },
+    {
+        id: 3,
+        name: "The Executive",
+        category: "Luxury",
+        price: 27500,
+        label: "ELEGANT",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC7-Z-y3cv95Fi5ATJJHbFXhEz5gLzhYrDbPTUHBGT1DFol5F_IvS2ius&s=10",
+        description: "Refined styling for business and special occasions.",
+        story: "The Executive takes inspiration from polished formal styling and the confidence of a well-chosen accessory.",
+        features: ["Formal-inspired design", "Refined appearance", "Suitable for special occasions"]
+    },
+    {
+        id: 4,
+        name: "Ocean Blue",
+        category: "Sport",
+        price: 21000,
+        label: "OCEAN STYLE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLm0rKjOoHoQHxSyy6MHJxqH69yANoJs7LwCoCB7-1FQ&s=10",
+        description: "Fresh blue styling inspired by the deep ocean.",
+        story: "Ocean Blue brings together an energetic spirit and a fresh colour story inspired by open water.",
+        features: ["Ocean-inspired theme", "Sporty character", "Everyday styling"]
+    },
+    {
+        id: 5,
+        name: "Golden Hour",
+        category: "Luxury",
+        price: 25000,
+        label: "GOLD EDITION",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSRAzl98nF2cLA8YWMxHAWSeDbCN_b9Zmv1QWVpqBl3Q&s=10",
+        description: "Warm golden details with a statement-making look.",
+        story: "Golden Hour is inspired by the warm glow of sunset and the timeless appeal of golden accents.",
+        features: ["Golden-inspired theme", "Eye-catching style", "Luxury appearance"]
+    },
+    {
+        id: 6,
+        name: "Urban Steel",
+        category: "Modern",
+        price: 19500,
+        label: "MODERN",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLIHYqucR37tPQsC1Co1sU8iTbK1Y-AuU07m0NlmdLhg&s",
+        description: "Clean lines and a confident contemporary finish.",
+        story: "Urban Steel is inspired by modern architecture, clean forms and practical everyday style.",
+        features: ["Contemporary styling", "Clean visual design", "Versatile appearance"]
+    },
+    {
+        id: 7,
+        name: "Royal Gold",
+        category: "Luxury",
+        price: 28000,
+        label: "ROYAL EDITION",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3GOaZgfcnbl9WdT_entiSBAT99NSXYqXECYCMLjHnoA&s=10",
+        description: "A striking golden appearance for memorable occasions.",
+        story: "Royal Gold is designed around a bold, celebratory look inspired by classic luxury styling.",
+        features: ["Gold-inspired design", "Elegant statement style", "Occasion-ready appearance"]
+    },
+    {
+        id: 8,
+        name: "Silver Horizon",
+        category: "Classic",
+        price: 20500,
+        label: "TIMELESS",
+        image: "https://images.unsplash.com/photo-1548171915-e79a380a2a4b?auto=format&fit=crop&w=900&q=85",
+        description: "Understated silver styling with a timeless feel.",
+        story: "Silver Horizon focuses on simplicity, balance and a clean aesthetic that never feels overdone.",
+        features: ["Silver-inspired appearance", "Classic character", "Simple elegant styling"]
+    },
+    {
+        id: 9,
+        name: "Night Rider",
+        category: "Sport",
+        price: 22500,
+        label: "SPORT STYLE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROm_SPyBPUuKPMgaJmZqp_oYWibRGXYPO9i3xibvQNmg&s",
+        description: "A strong sporty design for an active lifestyle.",
+        story: "Night Rider is inspired by movement, energy and the bold atmosphere of city nights.",
+        features: ["Sport-inspired design", "Bold appearance", "Active-style aesthetic"]
+    },
+    {
+        id: 10,
+        name: "Classic White",
+        category: "Classic",
+        price: 17500,
+        label: "PURE DESIGN",
+        image: "https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=900&q=85",
+        description: "Simple elegance with a bright and clean appearance.",
+        story: "Classic White celebrates clarity and simplicity through a fresh, understated visual style.",
+        features: ["Clean aesthetic", "Classic-inspired look", "Easy-to-style appearance"]
+    },
+    {
+        id: 11,
+        name: "Carbon Edge",
+        category: "Modern",
+        price: 23500,
+        label: "URBAN EDITION",
+        image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=900&q=85",
+        description: "A modern dark design with a powerful presence.",
+        story: "Carbon Edge is inspired by contemporary design and sharp, confident visual details.",
+        features: ["Modern appearance", "Strong visual character", "Contemporary styling"]
+    },
+    {
+        id: 12,
+        name: "Desert Sand",
+        category: "Modern",
+        price: 19000,
+        label: "EARTH TONES",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfOZPmkRA9AdauM8CEzdSqhxK4TAIN_hn8lHmADbnQ6A&s=10",
+        description: "Earthy tones inspired by timeless natural beauty.",
+        story: "Desert Sand draws inspiration from natural landscapes and the calm beauty of warm neutral colours.",
+        features: ["Natural colour inspiration", "Understated styling", "Modern design"]
+    },
+    {
+        id: 13,
+        name: "Imperial Blue",
+        category: "Luxury",
+        price: 26500,
+        label: "BLUE EDITION",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSieVh0G1bls0xz69cysxre0QpzRwpKPeopMkyZljorow&s",
+        description: "Deep blue tones with a refined luxury appearance.",
+        story: "Imperial Blue is inspired by deep blue hues and the elegance of carefully balanced design.",
+        features: ["Blue-inspired design", "Luxury styling", "Distinctive colour theme"]
+    },
+    {
+        id: 14,
+        name: "Midnight Steel",
+        category: "Modern",
+        price: 21500,
+        label: "MINIMAL",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCp_jINpFYhLCHFWF8Xr8UBToIkrMpt3Js2-TfDEMkg&s",
+        description: "Minimal styling made for modern everyday wear.",
+        story: "Midnight Steel combines a minimal visual approach with a modern, confident personality.",
+        features: ["Minimal-inspired design", "Modern aesthetic", "Everyday styling"]
+    },
+    {
+        id: 15,
+        name: "Royal Chrono",
+        category: "Sport",
+        price: 24000,
+        label: "SPORT EDITION",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrhh-WNcueaeeiWHpeBOjHfQHPUQIcbm8vLY4M9YB0Yw&s",
+        description: "Sport-inspired styling with a bold wrist presence.",
+        story: "Royal Chrono takes inspiration from energetic sport styling and a confident, bold appearance.",
+        features: ["Sport-inspired look", "Bold design language", "Dynamic styling"]
+    },
+    {
+        id: 16,
+        name: "Golden Classic",
+        category: "Classic",
+        price: 22000,
+        label: "CLASSIC GOLD",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmG17EfgNn4z2IJxJp2FVhWo1R_-kLAlPJuddJrT7vNA&s=10",
+        description: "A graceful classic look with warm golden accents.",
+        story: "Golden Classic brings together traditional elegance and the warmth of gold-inspired styling.",
+        features: ["Classic character", "Golden-inspired details", "Elegant appearance"]
+    },
+    {
+        id: 17,
+        name: "Ocean Steel",
+        category: "Sport",
+        price: 23000,
+        label: "ACTIVE STYLE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPKohOS067sl-vHbDhebN6E22jHNGdHd6Wg8hvdTRkhg&s",
+        description: "A versatile sporty style with a steel-inspired look.",
+        story: "Ocean Steel draws inspiration from the meeting of water, movement and contemporary design.",
+        features: ["Sport-inspired styling", "Versatile appearance", "Modern character"]
+    },
+    {
+        id: 18,
+        name: "The Minimalist",
+        category: "Modern",
+        price: 18000,
+        label: "LESS IS MORE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHGlyc8dPskVb_VsUBsvTomNPuvUs8y0qOHg-69Jrimg&s=10",
+        description: "Beautiful simplicity for those who prefer less.",
+        story: "The Minimalist celebrates a simple design philosophy in which every visual detail has room to breathe.",
+        features: ["Minimalist aesthetic", "Clean design", "Understated styling"]
+    },
+    {
+        id: 19,
+        name: "Prestige Black",
+        category: "Luxury",
+        price: 27000,
+        label: "PRESTIGE",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBEAye1any_RAr8eCrj_laVHWXyifOpN7rjEAsNU4m1Q&s",
+        description: "Elegant dark styling for a confident statement.",
+        story: "Prestige Black is inspired by the timeless appeal of dark, understated luxury accessories.",
+        features: ["Dark-inspired styling", "Premium visual design", "Confident appearance"]
+    },
+    {
+        id: 20,
+        name: "Eternal Gold",
+        category: "Luxury",
+        price: 29000,
+        label: "SIGNATURE GOLD",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF-NqiGfp6Jcj1E9J5PaUE4qnPo984NG-gotEyzhEfvA&s=10",
+        description: "A statement design inspired by timeless elegance.",
+        story: "Eternal Gold celebrates lasting style and the enduring appeal of golden-inspired design.",
+        features: ["Golden-inspired appearance", "Statement styling", "Luxury aesthetic"]
+    }
+];
+
+// Render every watch card
+const grid = document.getElementById("watch-grid");
+
+function renderWatches() {
+    grid.innerHTML = watches.map((watch, index) => `
+        <article class="watch-card"
+                 data-name="${watch.name.toLowerCase()}"
+                 data-category="${watch.category}"
+                 style="animation-delay:${Math.min(index * 0.035, 0.5)}s">
+
+            <div class="watch-image">
+                <img
+                    src="${watch.image}"
+                    alt="${watch.name} luxury wristwatch"
+                    loading="lazy"
+                >
+                <span class="watch-label">${watch.label}</span>
+            </div>
+
+            <div class="watch-info">
+                <div class="watch-category">
+                    ${watch.category} Collection
+                </div>
+
+                <h3>${watch.name}</h3>
+                <p>${watch.description}</p>
+
+                <div class="price">
+                    PKR ${watch.price.toLocaleString("en-PK")}
+                </div>
+
+                <div class="card-buttons">
+                    <button class="add-btn"
+                        onclick="addToCart(${watch.id})">
+                        ADD TO CART
+                    </button>
+
+                    <button class="learn-btn"
+                        onclick="toggleDetails(${watch.id})"
+                        id="learn-${watch.id}">
+                        LEARN MORE +
+                    </button>
+                </div>
+            </div>
+
+            <!-- Details open below this exact card -->
+            <div class="watch-details" id="details-${watch.id}">
+                <h4>${watch.name}</h4>
+
+                <p>${watch.story}</p>
+
+                <h4>Features</h4>
+
+                <ul>
+                    ${watch.features.map(feature =>
+                        `<li>${feature}</li>`
+                    ).join("")}
+                </ul>
+
+                <p>
+                    <strong>Collection:</strong> ${watch.category}
+                </p>
+
+                <p>
+                    <strong>Price:</strong>
+                    PKR ${watch.price.toLocaleString("en-PK")}
+                </p>
+
+                <button class="close-details"
+                    onclick="toggleDetails(${watch.id})">
+                    SHOW LESS −
+                </button>
+            </div>
+
+        </article>
+    `).join("");
+}
+
+// Open/close details underneath the selected card
+function toggleDetails(id) {
+    const details = document.getElementById("details-" + id);
+    const button = document.getElementById("learn-" + id);
+    const isOpen = details.classList.contains("open");
+
+    details.classList.toggle("open", !isOpen);
+    button.textContent = isOpen ? "LEARN MORE +" : "SHOW LESS −";
+
+    if (!isOpen) {
+        setTimeout(() => {
+            details.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }, 100);
+    }
+}
+
+// Search and category filter
+const searchInput = document.getElementById("search");
+const categorySelect = document.getElementById("category");
+
+function filterWatches() {
+    const searchText = searchInput.value.toLowerCase().trim();
+    const selectedCategory = categorySelect.value;
+
+    let visibleCount = 0;
+
+    document.querySelectorAll(".watch-card").forEach(card => {
+        const name = card.dataset.name;
+        const category = card.dataset.category;
+
+        const matchesName = name.includes(searchText);
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        const show = matchesName && matchesCategory;
+        card.style.display = show ? "" : "none";
+
+        if (show) visibleCount++;
+    });
+
+    let empty = document.getElementById("empty-message");
+
+    if (!empty) {
+        empty = document.createElement("p");
+        empty.id = "empty-message";
+        empty.className = "empty-message";
+        empty.textContent = "No watches found. Try another search.";
+        grid.appendChild(empty);
+    }
+
+    empty.style.display = visibleCount === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", filterWatches);
+categorySelect.addEventListener("change", filterWatches);
+
+// Cart: saves products in the shared albertoCart key
+function getCart() {
+    try {
+        const saved = JSON.parse(localStorage.getItem("albertoCart")) || [];
+        return Array.isArray(saved) ? saved : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function updateCartCount() {
+    const cart = getCart();
+
+    const count = cart.reduce((total, item) => {
+        return total + (Number(item.quantity) || 1);
+    }, 0);
+
+    document.getElementById("cart-count").textContent = count;
+}
+
+function addToCart(id) {
+    const watch = watches.find(item => item.id === id);
+    if (!watch) return;
+
+    const cart = getCart();
+    const existing = cart.find(item => Number(item.id) === watch.id);
+
+    if (existing) {
+        existing.quantity = (Number(existing.quantity) || 1) + 1;
+    } else {
+        cart.push({
+            id: watch.id,
+            name: watch.name,
+            price: watch.price,
+            image: watch.image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("albertoCart", JSON.stringify(cart));
+
+    updateCartCount();
+    showToast(watch.name + " added to cart!");
+}
+
+// Animated cart notification
+let toastTimer;
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2600);
+}
+
+// Start the page
+renderWatches();
+updateCartCount();
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,746 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Best Sellers | ALBERTO CLOCKS</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --green: #304c39;
+    --gold: #a18442;
+    --light: #edf4ee;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #243429;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(245, 250, 246, 0.86),
+            rgba(235, 245, 237, 0.90)
+        ),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyOaQD9zTWEjHGgpdHihgcqQ1FqIXwx8vuAKwoadIFtw&s=10");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* HEADER */
+
+header {
+    width: 100%;
+    padding: 22px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.82);
+    border-bottom: 1px solid rgba(48,76,57,0.15);
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #304c39;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.cart-link {
+    border: 1px solid var(--green);
+    padding: 10px 15px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 85px 20px 65px;
+    animation: fadeUp 0.9s ease both;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.hero p.description {
+    max-width: 620px;
+    margin: auto;
+    line-height: 1.9;
+    color: #56685a;
+    font-size: 14px;
+}
+
+.gold-line {
+    width: 75px;
+    height: 2px;
+    background: var(--gold);
+    margin: 28px auto;
+}
+
+/* COLLECTION */
+
+.collection {
+    padding: 15px 6% 90px;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: 35px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    font-size: 13px;
+    color: #617164;
+}
+
+/* SEARCH & FILTERS */
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 38px;
+}
+
+.controls input,
+.controls select {
+    padding: 13px 16px;
+    border: 1px solid #cbd8cd;
+    background: rgba(255,255,255,0.92);
+    color: #304c39;
+    outline: none;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+.controls input {
+    width: min(320px, 90vw);
+}
+
+.controls input:focus,
+.controls select:focus {
+    border-color: var(--gold);
+}
+
+/* WATCH CARDS */
+
+.watch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.watch-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(48,76,57,0.13);
+    border-radius: 5px;
+    background: rgba(255,255,255,0.91);
+    transition: transform 0.35s, box-shadow 0.35s;
+    animation: fadeUp 0.7s ease both;
+}
+
+.watch-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(29,52,35,0.14);
+}
+
+.watch-image {
+    height: 245px;
+    overflow: hidden;
+    background: #f2f5f0;
+    position: relative;
+}
+
+.watch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.65s ease;
+    display: block;
+}
+
+.watch-card:hover .watch-image img {
+    transform: scale(1.06);
+}
+
+.badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: var(--green);
+    color: white;
+    padding: 8px 10px;
+    font-size: 9px;
+    letter-spacing: 1.4px;
+}
+
+.watch-info {
+    padding: 20px 17px 22px;
+    text-align: center;
+}
+
+.category {
+    color: #89958a;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.watch-info h3 {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.stars {
+    color: #a18442;
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.price {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--green);
+    margin-bottom: 18px;
+}
+
+.card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--green);
+    background: var(--green);
+    color: white;
+    padding: 13px 8px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.details-btn {
+    color: var(--green);
+    background: transparent;
+}
+
+.details-btn:hover {
+    color: white;
+}
+
+.details {
+    display: none;
+    padding: 0 17px 20px;
+    text-align: center;
+    color: #58695b;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.details.show {
+    display: block;
+    animation: fadeUp 0.4s ease both;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 99;
+    max-width: calc(100vw - 44px);
+    padding: 17px 22px;
+    background: #304c39;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(25px);
+    pointer-events: none;
+    transition: 0.35s;
+    font-size: 13px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 45px 10px;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.82);
+    border-top: 1px solid rgba(48,76,57,0.13);
+}
+
+footer p {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #657467;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .watch-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .watch-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+    .watch-image {
+        height: 190px;
+    }
+
+    .watch-info {
+        padding: 16px 10px;
+    }
+
+    .watch-info h3 {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding: 65px 18px 45px;
+    }
+
+    .collection {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+}
+
+@media (max-width: 420px) {
+    .watch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .watch-image {
+        height: 270px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">ALBERTO</a>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="about.html">ABOUT</a>
+        <a href="login.html">ACCOUNT</a>
+        <a href="card.html" class="cart-link">
+            CART 🛒 <span id="cartCount">0</span>
+        </a>
+    </nav>
+</header>
+
+<section class="hero">
+    <p class="eyebrow">THE ALBERTO SELECTION</p>
+
+    <h1>Our <span>Best Sellers</span></h1>
+
+    <div class="gold-line"></div>
+
+    <p class="description">
+        Discover the timepieces chosen by our customers.
+        Timeless design, exceptional detail, and elegance
+        crafted for every moment.
+    </p>
+</section>
+
+<main class="collection">
+
+    <div class="section-heading">
+        <h2>Customer Favourites</h2>
+        <p>Eight signature timepieces. One timeless standard.</p>
+    </div>
+
+    <div class="controls">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search your favourite watch..."
+            aria-label="Search watches"
+        >
+
+        <select id="categoryFilter" aria-label="Filter watches">
+            <option value="all">All Categories</option>
+            <option value="classic">Classic</option>
+            <option value="luxury">Luxury</option>
+            <option value="sport">Sport</option>
+            <option value="modern">Modern</option>
+        </select>
+    </div>
+
+    <div class="watch-grid" id="watchGrid"></div>
+
+    <div class="no-results" id="noResults">
+        No watches found. Try another search.
+    </div>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+    <p>© 2026 ALBERTO CLOCKS · TIMELESS BY DESIGN</p>
+</footer>
+
+<script>
+const watches = [
+    {
+        id: 101,
+        name: "The Heritage",
+        category: "classic",
+        label: "CLASSIC",
+        price: 18500,
+        image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=85",
+        description: "A timeless classic with an elegant dial, refined detailing, and a versatile design."
+    },
+    {
+        id: 102,
+        name: "Midnight Noir",
+        category: "luxury",
+        label: "BEST SELLER",
+        price: 22000,
+        image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=85",
+        description: "A sophisticated statement piece designed for evenings and special occasions."
+    },
+    {
+        id: 103,
+        name: "The Executive",
+        category: "luxury",
+        label: "POPULAR",
+        price: 25000,
+        image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=85",
+        description: "Understated luxury for the gentleman who values precision and style."
+    },
+    {
+        id: 104,
+        name: "Ocean Blue",
+        category: "sport",
+        label: "CUSTOMER FAVOURITE",
+        price: 23500,
+        image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=800&q=85",
+        description: "A confident, sporty look inspired by deep ocean tones and everyday adventure."
+    },
+    {
+        id: 105,
+        name: "Golden Hour",
+        category: "luxury",
+        label: "BEST SELLER",
+        price: 27500,
+        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=85",
+        description: "Warm gold-inspired styling brings a refined finish to this standout timepiece."
+    },
+    {
+        id: 106,
+        name: "Urban Steel",
+        category: "modern",
+        label: "TRENDING",
+        price: 19500,
+        image: "https://images.unsplash.com/photo-1619134778706-7015533a6150?auto=format&fit=crop&w=800&q=85",
+        description: "A clean contemporary design made for modern everyday wear."
+    },
+    {
+        id: 107,
+        name: "Silver Classic",
+        category: "classic",
+        label: "TIMELESS",
+        price: 20500,
+        image: "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=800&q=85",
+        description: "A versatile classic with a polished look that works from day to night."
+    },
+    {
+        id: 108,
+        name: "Sport Elite",
+        category: "sport",
+        label: "TOP PICK",
+        price: 24000,
+        image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=85",
+        description: "A bold everyday watch with a sporty appearance and confident presence."
+    }
+];
+
+const watchGrid = document.getElementById("watchGrid");
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+const noResults = document.getElementById("noResults");
+const cartCountElement = document.getElementById("cartCount");
+const toastElement = document.getElementById("toast");
+
+function money(amount) {
+    return "PKR " + amount.toLocaleString("en-PK");
+}
+
+function renderWatches() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const category = categoryFilter.value;
+
+    const filteredWatches = watches.filter(watch => {
+        const matchesSearch =
+            watch.name.toLowerCase().includes(searchTerm) ||
+            watch.category.toLowerCase().includes(searchTerm);
+
+        const matchesCategory =
+            category === "all" || watch.category === category;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    watchGrid.innerHTML = filteredWatches.map(watch => `
+        <article class="watch-card">
+            <div class="watch-image">
+                <span class="badge">${watch.label}</span>
+                <img
+                    src="${watch.image}"
+                    alt="${watch.name}"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="watch-info">
+                <p class="category">${watch.category}</p>
+                <h3>${watch.name}</h3>
+                <div class="stars" aria-label="Five stars">★★★★★</div>
+                <span class="price">${money(watch.price)}</span>
+
+                <div class="card-buttons">
+                    <button
+                        class="btn"
+                        onclick="addToCart(${watch.id})"
+                    >
+                        ADD TO CART
+                    </button>
+
+                    <button
+                        class="btn details-btn"
+                        onclick="toggleDetails(${watch.id})"
+                        aria-expanded="false"
+                        id="detailsButton-${watch.id}"
+                    >
+                        VIEW DETAILS +
+                    </button>
+                </div>
+            </div>
+
+            <div class="details" id="details-${watch.id}">
+                ${watch.description}
+            </div>
+        </article>
+    `).join("");
+
+    noResults.style.display =
+        filteredWatches.length === 0 ? "block" : "none";
+}
+
+function getCart() {
+    try {
+        const savedCart = JSON.parse(
+            localStorage.getItem("albertoCart") || "[]"
+        );
+
+        return Array.isArray(savedCart) ? savedCart : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function updateCartCount() {
+    const cart = getCart();
+
+    const totalItems = cart.reduce((sum, item) => {
+        return sum + (Number(item.quantity) || 1);
+    }, 0);
+
+    cartCountElement.textContent = totalItems;
+}
+
+function addToCart(id) {
+    const watch = watches.find(item => item.id === id);
+
+    if (!watch) return;
+
+    const cart = getCart();
+
+    const existingItem = cart.find(item =>
+        Number(item.id) === watch.id ||
+        item.name === watch.name
+    );
+
+    if (existingItem) {
+        existingItem.quantity = (Number(existingItem.quantity) || 1) + 1;
+    } else {
+        cart.push({
+            id: watch.id,
+            name: watch.name,
+            price: watch.price,
+            image: watch.image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("albertoCart", JSON.stringify(cart));
+
+    updateCartCount();
+    showToast(watch.name + " added to your cart ✓");
+}
+
+function toggleDetails(id) {
+    const details = document.getElementById("details-" + id);
+    const button = document.getElementById("detailsButton-" + id);
+
+    details.classList.toggle("show");
+
+    const isOpen = details.classList.contains("show");
+
+    button.textContent = isOpen ? "HIDE DETAILS −" : "VIEW DETAILS +";
+    button.setAttribute("aria-expanded", String(isOpen));
+}
+
+let toastTimer;
+
+function showToast(message) {
+    toastElement.textContent = message;
+    toastElement.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toastElement.classList.remove("show");
+    }, 2600);
+}
+
+searchInput.addEventListener("input", renderWatches);
+categoryFilter.addEventListener("change", renderWatches);
+
+renderWatches();
+updateCartCount();
+</script>
+
+</body>
+</html>
+```

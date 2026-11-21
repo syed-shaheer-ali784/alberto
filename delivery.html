@@ -1,0 +1,755 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Information | ALBERTO CLOCKS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green: #254d38;
+            --light-green: #e7f0e8;
+            --gold: #b99a56;
+            --dark: #18251d;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--dark);
+            background:
+                linear-gradient(rgba(248, 252, 248, .90),
+                                rgba(232, 242, 233, .94)),
+                url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTHr4CjlMHU_hFDrGAWnPxBY1yRQXhCP7D22LjwJuS3o-u8LE9H3kiFTE&s=10");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 7%;
+            background: rgba(255, 255, 255, .94);
+            border-bottom: 1px solid #dce7dc;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            color: var(--green);
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 7px;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            min-height: 390px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 65px 20px;
+            animation: fadeUp 1s ease both;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            letter-spacing: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(38px, 6vw, 68px);
+            color: var(--green);
+            line-height: 1.15;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 20px auto;
+            color: #526257;
+        }
+
+        .gold-line {
+            width: 75px;
+            height: 3px;
+            background: var(--gold);
+            margin: 23px auto;
+        }
+
+        .section {
+            width: min(1100px, 90%);
+            margin: 0 auto 65px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            color: var(--green);
+            font-family: Georgia, serif;
+            font-size: clamp(27px, 4vw, 40px);
+        }
+
+        .section-heading p {
+            color: #657267;
+            margin-top: 8px;
+        }
+
+        .delivery-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .option-card {
+            padding: 30px 23px;
+            border: 1px solid #dce7dc;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .85);
+            box-shadow: 0 10px 35px rgba(30, 60, 40, .07);
+            transition: transform .35s, box-shadow .35s;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 38px rgba(30, 60, 40, .13);
+        }
+
+        .option-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .option-card h3 {
+            color: var(--green);
+            margin-bottom: 9px;
+        }
+
+        .option-card p {
+            font-size: 14px;
+            color: #657267;
+        }
+
+        .delivery-time {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 12px;
+            border-radius: 30px;
+            color: var(--green);
+            background: var(--light-green);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .info-panel,
+        .form-panel,
+        .tracking-panel {
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .94);
+            border: 1px solid #dce7dc;
+            box-shadow: 0 12px 40px rgba(30, 60, 40, .08);
+        }
+
+        .info-panel h2,
+        .form-panel h2,
+        .tracking-panel h2 {
+            color: var(--green);
+            font-family: Georgia, serif;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .info-panel > p,
+        .form-panel > p {
+            color: #657267;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid #e7eee7;
+            font-size: 14px;
+        }
+
+        .info-list li span {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .note {
+            background: #eef5ee;
+            padding: 16px;
+            border-left: 3px solid var(--gold);
+            border-radius: 8px;
+            margin-top: 22px;
+            font-size: 13px;
+            color: #536357;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--green);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d6e2d6;
+            border-radius: 9px;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+            color: var(--dark);
+            background: #fbfdfb;
+            transition: border-color .25s, box-shadow .25s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(37, 77, 56, .09);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 9px;
+            background: var(--green);
+            color: white;
+            padding: 14px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #183a28;
+            transform: translateY(-2px);
+        }
+
+        .form-panel .btn {
+            grid-column: 1 / -1;
+        }
+
+        .tracking-panel {
+            text-align: center;
+        }
+
+        .tracking-panel p {
+            color: #657267;
+            margin: 10px auto 20px;
+            max-width: 650px;
+        }
+
+        .tracking-form {
+            display: flex;
+            max-width: 570px;
+            gap: 10px;
+            margin: auto;
+        }
+
+        .tracking-form input {
+            flex: 1;
+        }
+
+        .tracking-result {
+            display: none;
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 10px;
+            background: var(--light-green);
+            color: var(--green);
+        }
+
+        .footer {
+            padding: 35px 20px;
+            text-align: center;
+            background: #193b29;
+            color: white;
+        }
+
+        .footer strong {
+            letter-spacing: 4px;
+            color: #e4ca8c;
+        }
+
+        .footer p {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #d0ddd2;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            max-width: calc(100% - 40px);
+            padding: 16px 22px;
+            border-radius: 12px;
+            color: white;
+            background: var(--green);
+            box-shadow: 0 10px 30px #0002;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: .4s;
+            z-index: 200;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .topbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .delivery-options {
+                grid-template-columns: 1fr;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .tracking-form {
+                flex-direction: column;
+            }
+
+            .info-panel,
+            .form-panel,
+            .tracking-panel {
+                padding: 22px 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <a href="index.html" class="logo">
+        ALBERTO
+        <span>C L O C K S</span>
+    </a>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="about.html">ABOUT</a>
+        <a href="delivery.html">DELIVERY</a>
+        <a href="signin.html">ACCOUNT</a>
+        <a href="card.html">CART 🛒</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">THE ALBERTO EXPERIENCE</div>
+    <h1>Delivery Information</h1>
+    <div class="gold-line"></div>
+    <p>
+        Your timepiece deserves exceptional care.
+        Discover our delivery options and share your details
+        for a smooth and convenient delivery experience.
+    </p>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <div class="eyebrow">DELIVERY OPTIONS</div>
+        <h2>Delivered With Care</h2>
+        <p>Choose the delivery method that suits you best.</p>
+    </div>
+
+    <div class="delivery-options">
+        <article class="option-card">
+            <div class="option-icon">🚚</div>
+            <h3>Courier Delivery</h3>
+            <p>
+                Have your selected timepiece delivered to
+                your home or preferred address.
+            </p>
+            <span class="delivery-time">Estimated: 3–7 working days</span>
+        </article>
+
+        <article class="option-card">
+            <div class="option-icon">🏬</div>
+            <h3>Store Pickup</h3>
+            <p>
+                Prefer collecting your order yourself?
+                Select store pickup when completing your details.
+            </p>
+            <span class="delivery-time">Pickup confirmation required</span>
+        </article>
+
+        <article class="option-card">
+            <div class="option-icon">📦</div>
+            <h3>Order Tracking</h3>
+            <p>
+                Keep your order reference safe so you can
+                identify your purchase when contacting support.
+            </p>
+            <span class="delivery-time">Tracking setup pending</span>
+        </article>
+    </div>
+</section>
+
+<section class="section">
+    <div class="main-grid">
+
+        <div class="info-panel">
+            <div class="eyebrow">IMPORTANT DETAILS</div>
+            <h2>Before You Order</h2>
+            <p>
+                Please check your delivery information carefully
+                before submitting the form.
+            </p>
+
+            <ul class="info-list">
+                <li>
+                    <span>01</span>
+                    Enter your correct name and active phone number.
+                </li>
+                <li>
+                    <span>02</span>
+                    Include your city, postal code and complete address.
+                </li>
+                <li>
+                    <span>03</span>
+                    Select courier delivery or store pickup.
+                </li>
+                <li>
+                    <span>04</span>
+                    Keep your order number for future reference.
+                </li>
+            </ul>
+
+            <div class="note">
+                <strong>Please note:</strong> Delivery estimates are
+                illustrative. Actual delivery times, courier availability
+                and store pickup arrangements must be confirmed by the
+                ALBERTO CLOCKS team.
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="eyebrow">YOUR DETAILS</div>
+            <h2>Delivery Form</h2>
+            <p>Enter your details below.</p>
+
+            <form id="deliveryForm">
+                <div class="field">
+                    <label for="fullName">Full Name *</label>
+                    <input id="fullName" name="fullName"
+                           type="text" required
+                           placeholder="Your full name">
+                </div>
+
+                <div class="field">
+                    <label for="phone">Phone Number *</label>
+                    <input id="phone" name="phone"
+                           type="tel" required
+                           placeholder="03XX XXXXXXX">
+                </div>
+
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input id="email" name="email"
+                           type="email"
+                           placeholder="you@example.com">
+                </div>
+
+                <div class="field">
+                    <label for="city">City *</label>
+                    <input id="city" name="city"
+                           type="text" required
+                           placeholder="Your city">
+                </div>
+
+                <div class="field">
+                    <label for="postalCode">Postal Code</label>
+                    <input id="postalCode" name="postalCode"
+                           type="text"
+                           placeholder="Postal code">
+                </div>
+
+                <div class="field">
+                    <label for="method">Delivery Method *</label>
+                    <select id="method" name="method" required>
+                        <option value="Courier Delivery">Courier Delivery</option>
+                        <option value="Store Pickup">Store Pickup</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <label for="address">Complete Address *</label>
+                    <textarea id="address" name="address" required
+                              placeholder="House number, street, area and nearby landmark"></textarea>
+                </div>
+
+                <div class="field full">
+                    <label for="instructions">Additional Instructions</label>
+                    <textarea id="instructions" name="instructions"
+                              placeholder="Optional delivery instructions"></textarea>
+                </div>
+
+                <button class="btn" type="submit">
+                    SAVE DELIVERY DETAILS
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="tracking-panel">
+        <div class="eyebrow">YOUR TIMEPIECE JOURNEY</div>
+        <h2>Order Tracking</h2>
+        <p>
+            Enter an order reference to check saved orders in this
+            browser. This demo does not connect to a live courier
+            or provide real-time shipment tracking.
+        </p>
+
+        <form id="trackingForm" class="tracking-form">
+            <input id="orderNumber" type="text"
+                   placeholder="Enter order number"
+                   required>
+            <button class="btn" type="submit">CHECK ORDER</button>
+        </form>
+
+        <div id="trackingResult" class="tracking-result"></div>
+    </div>
+</section>
+
+<footer class="footer">
+    <strong>ALBERTO CLOCKS</strong>
+    <p>Beyond Time. Beyond Ordinary.</p>
+    <p>Luxury timepieces, delivered with care.</p>
+</footer>
+
+<div id="toast" class="toast"></div>
+
+<script>
+    const deliveryForm = document.getElementById("deliveryForm");
+    const trackingForm = document.getElementById("trackingForm");
+    const trackingResult = document.getElementById("trackingResult");
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3500);
+    }
+
+    deliveryForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const details = {
+            fullName: document.getElementById("fullName").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            city: document.getElementById("city").value.trim(),
+            postalCode: document.getElementById("postalCode").value.trim(),
+            method: document.getElementById("method").value,
+            address: document.getElementById("address").value.trim(),
+            instructions: document.getElementById("instructions").value.trim()
+        };
+
+        /*
+          Demo only: save in this browser.
+          Real order submission needs a secure server.
+        */
+        try {
+            localStorage.setItem("albertoDeliveryDetails",
+                                 JSON.stringify(details));
+
+            showToast("Delivery details saved in this browser.");
+
+            alert(
+                "Delivery details saved successfully!\n\n" +
+                "Method: " + details.method +
+                "\nCity: " + details.city +
+                "\n\nDemo only: your details have NOT been sent " +
+                "to a shop or courier."
+            );
+        } catch (error) {
+            alert("Details could not be saved in this browser.");
+        }
+    });
+
+    trackingForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const enteredOrder = document.getElementById("orderNumber")
+                                     .value.trim();
+
+        let orders = [];
+
+        try {
+            orders = JSON.parse(
+                localStorage.getItem("albertoOrders") || "[]"
+            );
+        } catch (error) {
+            orders = [];
+        }
+
+        const foundOrder = orders.find(order => {
+            const possibleIds = [
+                order.orderNumber,
+                order.id,
+                order.orderId
+            ].filter(value => value !== undefined && value !== null);
+
+            return possibleIds.some(value =>
+                String(value).toLowerCase() === enteredOrder.toLowerCase()
+            );
+        });
+
+        trackingResult.style.display = "block";
+
+        if (foundOrder) {
+            trackingResult.textContent =
+                "Order found in this browser. " +
+                "This is a locally saved order only; live courier status " +
+                "is not available.";
+        } else {
+            trackingResult.textContent =
+                "No matching locally saved order was found. " +
+                "Please check your reference. Live courier tracking " +
+                "is not connected yet.";
+        }
+    });
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALBERTO CLOCKS | Timepieces</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --green:#47785d;
+  --green-dark:#2e6043;
+  --light-green:#edf6ef;
+  --pale-green:#e5f1e7;
+  --border:#d7e7da;
+  --white:#ffffff;
+  --text:#294334;
+  --muted:#718276;
+}
+
+body{
+  background:#f9fcf9;
+  color:var(--text);
+  font-family:Arial,sans-serif;
+}
+
+header{
+  padding:25px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+  background:#fff;
+  gap:15px;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  letter-spacing:5px;
+  color:var(--green);
+  font-size:25px;
+  text-decoration:none;
+}
+
+header a{
+  color:var(--text);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+header a:hover{color:var(--green)}
+
+.hero{
+  text-align:center;
+  padding:85px 20px 60px;
+  background:linear-gradient(180deg,#fff,#f0f7f1);
+}
+
+.eyebrow{
+  color:var(--green);
+  letter-spacing:5px;
+  font-size:11px;
+}
+
+h1{
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:clamp(38px,6vw,68px);
+  margin:20px 0;
+  color:#294b36;
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.line{
+  width:65px;
+  height:2px;
+  background:#8fb69a;
+  margin:25px auto;
+}
+
+.catalog{padding:15px 6% 90px}
+
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+
+input,select{
+  background:#fff;
+  border:1px solid #cfe1d2;
+  border-radius:7px;
+  color:var(--text);
+  padding:14px;
+  font-size:13px;
+  outline:none;
+}
+
+input:focus,select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(71,120,93,.10);
+}
+
+input{flex:1;min-width:190px}
+select{min-width:170px}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+}
+
+/* LIGHT GREEN WATCH CARDS */
+.card{
+  background:#eaf4ec;
+  border:1px solid #d4e7d8;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(47,91,59,.055);
+  transition:transform .35s,box-shadow .35s,border-color .35s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#a7cbb0;
+  box-shadow:0 14px 30px rgba(47,91,59,.12);
+}
+
+.photo{
+  overflow:hidden;
+  background:#e4efe6;
+}
+
+.card img{
+  width:100%;
+  height:245px;
+  object-fit:cover;
+  display:block;
+  transition:transform .6s;
+}
+
+.card:hover img{transform:scale(1.055)}
+
+.card-body{
+  padding:20px;
+  background:#eaf4ec;
+}
+
+.number{
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--green);
+}
+
+.card h2{
+  font-family:Georgia,serif;
+  font-size:24px;
+  font-weight:400;
+  margin:12px 0;
+  color:#294b36;
+}
+
+.card p{
+  font-size:12px;
+  color:#617566;
+  line-height:1.8;
+  min-height:44px;
+}
+
+.price{
+  color:#34704a;
+  margin:17px 0;
+  font-size:14px;
+  font-weight:600;
+}
+
+button{
+  cursor:pointer;
+  font-size:11px;
+  letter-spacing:2px;
+  transition:.25s;
+}
+
+.learn{
+  background:transparent;
+  border:0;
+  border-bottom:1px solid #82ac8d;
+  color:#315c40;
+  padding:10px 0;
+}
+
+.learn:hover{
+  color:#1c4029;
+  border-color:#1c4029;
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:45px;
+  display:none;
+}
+
+footer{
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:30px;
+  background:#fff;
+  color:#718276;
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+/* DETAILS POPUP */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(38,67,47,.35);
+  z-index:10;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(7px);
+}
+
+.overlay.show{
+  display:flex;
+  animation:fade .3s;
+}
+
+.modal{
+  width:min(1000px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  background:#f7fbf7;
+  border:1px solid #c9dfce;
+  border-radius:12px;
+  color:var(--text);
+  position:relative;
+  box-shadow:0 25px 80px rgba(32,68,43,.2);
+  animation:rise .4s;
+}
+
+.close{
+  position:sticky;
+  top:0;
+  float:right;
+  margin:12px;
+  z-index:2;
+  width:38px;
+  height:38px;
+  border:1px solid #c9dfce;
+  border-radius:50%;
+  background:#fff;
+  color:var(--green);
+  font-size:23px;
+  letter-spacing:0;
+}
+
+.close:hover{
+  background:var(--pale-green);
+}
+
+.detail-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  padding:30px;
+}
+
+.detail-image{
+  width:100%;
+  height:390px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.detail-copy{
+  align-self:center;
+  padding:10px;
+}
+
+.detail-copy h2,.story-copy h2{
+  font-family:Georgia,serif;
+  font-size:clamp(30px,4vw,45px);
+  font-weight:400;
+  margin:15px 0;
+  color:#294b36;
+}
+
+.detail-copy p,.story-copy p{
+  color:#65796a;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.specs{
+  margin-top:25px;
+  border-top:1px solid var(--border);
+}
+
+.spec{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+
+.spec span:first-child{color:#7b8c7f}
+.spec span:last-child{color:#315c40;text-align:right}
+
+.story{
+  border-top:1px solid var(--border);
+  padding:35px;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:30px;
+  align-items:center;
+  background:#edf6ef;
+}
+
+.story img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:8px;
+  filter:none;
+}
+
+.story-copy h3{
+  color:var(--green);
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+.story-copy p{margin-top:12px}
+
+.modal-footer{
+  padding:20px 35px;
+  border-top:1px solid var(--border);
+  background:#fff;
+  color:var(--green);
+  font-size:10px;
+  letter-spacing:3px;
+}
+
+@keyframes fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:1000px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(max-width:700px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card img{height:190px}
+  .card-body{padding:13px}
+  .card h2{font-size:20px}
+  .detail-top,.story{grid-template-columns:1fr}
+  .detail-image{height:290px}
+  .detail-top{padding:18px;gap:12px}
+  .story{padding:22px}
+  .story img{height:240px}
+  .hero{padding-top:60px}
+}
+
+@media(max-width:430px){
+  .grid{grid-template-columns:1fr}
+  .card img{height:260px}
+  header{padding:20px 5%}
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #203729;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.72),
+            rgba(235, 245, 237, 0.82)
+        ),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0N9xvQpIlYv5dnx1VK-6S--ZlSHGToCkj2rCE3Ie3og&s");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a href="index.html" class="logo">ALBERTO</a>
+  <a href="index.html">← BACK TO HOME</a>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">DISCOVER ALBERTO</div>
+  <h1>Elegance in Every Detail</h1>
+  <p>Twenty timepieces. Twenty expressions of timeless craftsmanship.</p>
+  <div class="line"></div>
+</section>
+
+<main class="catalog">
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search your timepiece...">
+    <select id="filter">
+      <option value="all">All Collections</option>
+      <option value="Classic">Classic Collection</option>
+      <option value="Modern">Modern Collection</option>
+      <option value="Sport">Sport Collection</option>
+      <option value="Luxury">Luxury Collection</option>
+    </select>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">No timepieces found. Try another search.</div>
+</main>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true"
+aria-labelledby="detailName">
+  <div class="modal">
+    <button class="close" id="close" aria-label="Close details">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<footer>ALBERTO CLOCKS · BEYOND TIME. BEYOND ORDINARY.</footer>
+
+<script>
+const watches = [
+{name:"The Heritage",category:"Classic",price:18500,
+image:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85",
+desc:"A timeless design inspired by the elegance of traditional watchmaking.",
+movement:"Automatic style",material:"Stainless steel",style:"Classic",
+story:"The Heritage represents our appreciation for traditional watch design. Its balanced dial, refined details and enduring silhouette celebrate the art of keeping time."},
+
+{name:"Midnight Noir",category:"Luxury",price:24500,
+image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85",
+desc:"A dark, confident timepiece designed for unforgettable evenings.",
+movement:"Precision quartz",material:"Black-tone steel",style:"Luxury",
+story:"Midnight Noir was imagined for those who appreciate quiet confidence. Its dark appearance and understated character bring a bold edge to formal style."},
+
+{name:"The Executive",category:"Classic",price:27500,
+image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=900&q=85",
+desc:"Understated sophistication for business, celebrations and beyond.",
+movement:"Precision quartz",material:"Steel finish",style:"Formal",
+story:"The Executive celebrates thoughtful design. Clean lines and a composed profile make it a natural companion for professional and formal occasions."},
+
+{name:"Ocean Blue",category:"Sport",price:22000,
+image:"https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=900&q=85",
+desc:"A blue-dial statement inspired by the depth and calm of the ocean.",
+movement:"Precision quartz",material:"Steel finish",style:"Sport",
+story:"Ocean Blue takes inspiration from open water and distant horizons. Its confident colour brings energy to a versatile everyday design."},
+
+{name:"Golden Hour",category:"Luxury",price:26500,
+image:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=900&q=85",
+desc:"Warm metallic details bring a golden glow to every moment.",
+movement:"Precision quartz",material:"Gold-tone finish",style:"Luxury",
+story:"Golden Hour captures the warmth of the last sunlight of the day. Its golden accents are designed to feel elegant without overpowering your style."},
+
+{name:"Urban Steel",category:"Modern",price:19500,
+image:"https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=900&q=85",
+desc:"Contemporary lines and a versatile look made for city life.",
+movement:"Precision quartz",material:"Steel finish",style:"Modern",
+story:"Urban Steel reflects the rhythm of modern life. Its practical, clean aesthetic is made for daily wear, from the workday to the weekend."},
+
+{name:"Royal Crest",category:"Luxury",price:29500,
+image:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=85",
+desc:"A distinguished presence for those who appreciate refined details.",
+movement:"Automatic style",material:"Premium-style finish",style:"Luxury",
+story:"Royal Crest draws on the timeless language of formal accessories. Its confident presence is designed for memorable occasions and personal milestones."},
+
+{name:"Silver Horizon",category:"Modern",price:20500,
+image:"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=900&q=85",
+desc:"A fresh silver look that complements a modern wardrobe.",
+movement:"Precision quartz",material:"Silver-tone finish",style:"Modern",
+story:"Silver Horizon celebrates simplicity and clarity. Its versatile appearance makes it easy to pair with both relaxed and tailored outfits."},
+
+{name:"Carbon Edge",category:"Sport",price:23500,
+image:"https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=900&q=85",
+desc:"A bold sport-inspired design with a strong contemporary profile.",
+movement:"Precision quartz",material:"Dark-tone finish",style:"Sport",
+story:"Carbon Edge takes inspiration from performance design and modern engineering. Its assertive styling is made for those who prefer a stronger look."},
+
+{name:"Imperial Gold",category:"Luxury",price:32000,
+image:"https://images.unsplash.com/photo-1548171915-e79a380a2a4b?auto=format&fit=crop&w=900&q=85",
+desc:"Golden accents give this timepiece a confident, celebratory feel.",
+movement:"Automatic style",material:"Gold-tone finish",style:"Luxury",
+story:"Imperial Gold was conceived around the enduring appeal of golden details. The design brings warmth and presence to a special occasion."},
+
+{name:"Classic White",category:"Classic",price:18000,
+image:"https://images.unsplash.com/photo-1511370235399-1802cae1d32f?auto=format&fit=crop&w=900&q=85",
+desc:"A clean dial and balanced design for everyday elegance.",
+movement:"Precision quartz",material:"Steel finish",style:"Classic",
+story:"Classic White focuses on readability and timeless simplicity. It is a versatile design for anyone who appreciates a clean, uncluttered dial."},
+
+{name:"Night Rider",category:"Sport",price:24000,
+image:"https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&w=900&q=85",
+desc:"Dark styling brings a sporty attitude to your everyday look.",
+movement:"Precision quartz",material:"Dark-tone finish",style:"Sport",
+story:"Night Rider brings a confident, sport-inspired mood to a contemporary silhouette. Its darker styling works especially well with casual outfits."},
+
+{name:"Rose Signature",category:"Luxury",price:28500,
+image:"https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=900&q=85",
+desc:"Soft rose-toned accents create a distinctive, polished finish.",
+movement:"Precision quartz",material:"Rose-tone finish",style:"Luxury",
+story:"Rose Signature pairs a warm colour palette with refined styling. Its distinctive finish is designed for those who appreciate subtle individuality."},
+
+{name:"Heritage Steel",category:"Classic",price:21000,
+image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85",
+desc:"A steel-inspired classic with a versatile, enduring silhouette.",
+movement:"Automatic style",material:"Steel finish",style:"Classic",
+story:"Heritage Steel celebrates the enduring appeal of traditional watch forms. Its straightforward design is intended to remain relevant beyond passing trends."},
+
+{name:"Blue Meridian",category:"Modern",price:22500,
+image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+desc:"A striking blue look adds character to a contemporary timepiece.",
+movement:"Precision quartz",material:"Steel finish",style:"Modern",
+story:"Blue Meridian takes its inspiration from open skies and distant horizons. A distinctive blue look brings colour to a clean, modern design."},
+
+{name:"The Voyager",category:"Sport",price:25500,
+image:"https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=85",
+desc:"An adventurous style for weekends, travel and everyday exploration.",
+movement:"Precision quartz",material:"Steel finish",style:"Sport",
+story:"The Voyager is inspired by movement and discovery. Its versatile sport styling suits days spent exploring new places or enjoying the outdoors."},
+
+{name:"Diamond Poise",category:"Luxury",price:35000,
+image:"https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=85",
+desc:"A refined statement inspired by sparkle, balance and precision.",
+movement:"Precision quartz",material:"Premium-style finish",style:"Luxury",
+story:"Diamond Poise focuses on elegant proportions and carefully considered details. It is designed for moments when a little extra refinement feels right."},
+
+{name:"Minimal One",category:"Modern",price:17500,
+image:"https://images.unsplash.com/photo-1495856458515-0637185db551?auto=format&fit=crop&w=900&q=85",
+desc:"Less detail, more character: a clean and modern everyday watch.",
+movement:"Precision quartz",material:"Minimal steel finish",style:"Modern",
+story:"Minimal One follows the principle that thoughtful simplicity never needs to shout. Its uncluttered aesthetic works across changing styles and occasions."},
+
+{name:"Prestige Chrono",category:"Classic",price:31000,
+image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85",
+desc:"A chronograph-inspired appearance with a strong classic character.",
+movement:"Chronograph-inspired style",material:"Steel finish",style:"Classic",
+story:"Prestige Chrono celebrates the technical look of traditional chronographs. Its layered visual details create a purposeful, sophisticated appearance."},
+
+{name:"Eternal Black",category:"Luxury",price:27000,
+image:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85",
+desc:"A timeless black look built around confident, understated styling.",
+movement:"Precision quartz",material:"Dark-tone finish",style:"Luxury",
+story:"Eternal Black is built around the versatility of dark styling. The design is intended to complement a wide range of looks without losing its character."}
+];
+
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+const filter=document.getElementById("filter");
+const overlay=document.getElementById("overlay");
+const modalContent=document.getElementById("modalContent");
+
+function money(price){
+ return "PKR "+price.toLocaleString("en-PK");
+}
+
+function render(){
+ const term=search.value.toLowerCase().trim();
+ const category=filter.value;
+
+ const found=watches.filter(w=>
+  (category==="all"||w.category===category)&&
+  (w.name.toLowerCase().includes(term)||
+   w.desc.toLowerCase().includes(term))
+ );
+
+ grid.innerHTML=found.map(w=>`
+ <article class="card">
+  <div class="photo">
+   <img src="${w.image}" alt="${w.name}" loading="lazy">
+  </div>
+  <div class="card-body">
+   <div class="number">ALBERTO · ${String(watches.indexOf(w)+1).padStart(2,"0")}</div>
+   <h2>${w.name}</h2>
+   <p>${w.desc}</p>
+   <div class="price">${money(w.price)}</div>
+   <button class="learn" data-watch="${watches.indexOf(w)}">LEARN MORE ↗</button>
+  </div>
+ </article>`).join("");
+
+ document.getElementById("empty").style.display=found.length?"none":"block";
+}
+
+function openDetails(index){
+ const w=watches[index];
+
+ modalContent.innerHTML=`
+ <section class="detail-top">
+  <img class="detail-image" src="${w.image}" alt="${w.name}">
+  <div class="detail-copy">
+   <div class="eyebrow">THE ALBERTO COLLECTION</div>
+   <h2 id="detailName">${w.name}</h2>
+   <p>${w.desc}</p>
+   <div class="price">${money(w.price)}</div>
+   <div class="line" style="margin:20px 0"></div>
+   <h3 style="font-family:Georgia,serif;font-size:25px;font-weight:400">
+    Watch Details
+   </h3>
+   <p style="margin-top:12px">
+    The ${w.name} brings together considered design, distinctive styling
+    and an elegant everyday presence. Created for people who value
+    the details that make a timepiece feel personal.
+   </p>
+   <div class="specs">
+    <div class="spec"><span>Collection</span><span>${w.category}</span></div>
+    <div class="spec"><span>Movement style</span><span>${w.movement}</span></div>
+    <div class="spec"><span>Material style</span><span>${w.material}</span></div>
+    <div class="spec"><span>Design</span><span>${w.style}</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="story">
+  <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=85"
+       alt="Watchmaking craft and workshop">
+  <div class="story-copy">
+   <h3>THE HAND BEHIND THE TIMEPIECE</h3>
+   <h2>The Maker's Story</h2>
+   <p>${w.story}</p>
+   <p>At ALBERTO, we believe a watch should be more than an accessory.
+   It should reflect personal taste, thoughtful design and an appreciation
+   for the craft behind every detail.</p>
+  </div>
+ </section>
+ <div class="modal-footer">ALBERTO CLOCKS · BEYOND TIME. BEYOND ORDINARY.</div>`;
+
+ overlay.classList.add("show");
+ document.body.style.overflow="hidden";
+ document.getElementById("close").focus();
+}
+
+function closeDetails(){
+ overlay.classList.remove("show");
+ document.body.style.overflow="";
+}
+
+grid.addEventListener("click",e=>{
+ const button=e.target.closest("[data-watch]");
+ if(button) openDetails(Number(button.dataset.watch));
+});
+
+document.getElementById("close").addEventListener("click",closeDetails);
+overlay.addEventListener("click",e=>{
+ if(e.target===overlay) closeDetails();
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape") closeDetails();
+});
+search.addEventListener("input",render);
+filter.addEventListener("change",render);
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBERTO CLOCKS | Men's Watches</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: #17251c;
+            background:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.72),
+                    rgba(235, 245, 237, 0.82)
+                ),
+                url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHmRYguYwJw-XD-P5Sfe5qPzLl3Jp896k4Hg9Dundlng&s=10");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        header {
+            padding: 24px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            background: rgba(255, 255, 255, 0.65);
+            border-bottom: 1px solid rgba(30, 60, 40, 0.15);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            color: #263e2c;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #263e2c;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #a18442;
+        }
+
+        .hero {
+            min-height: 330px;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero p {
+            letter-spacing: 5px;
+            font-size: 12px;
+            margin-bottom: 18px;
+            color: #657768;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(38px, 6vw, 68px);
+            font-weight: normal;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #9c8042;
+        }
+
+        .hero .description {
+            font-size: 15px;
+            letter-spacing: 0;
+            line-height: 1.8;
+            max-width: 600px;
+            color: #39483d;
+        }
+
+        .collection {
+            padding: 30px 7% 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+            font-size: 34px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #58685b;
+            font-size: 14px;
+        }
+
+        .watches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .watch-card {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(50, 75, 55, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(20, 40, 25, 0.13);
+        }
+
+        .watch-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .watch-card h3 {
+            font-family: Georgia, serif;
+            font-size: 22px;
+            margin: 20px 10px 10px;
+        }
+
+        .watch-card p {
+            color: #647367;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            display: block;
+            font-weight: bold;
+            color: #8b7138;
+            margin-bottom: 18px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid #314b37;
+            background: #314b37;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #a18442;
+            border-color: #a18442;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.65);
+            color: #536456;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 60px 18px;
+            }
+
+            .collection {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo">ALBERTO</a>
+
+        <nav>
+            <a href="index.html">HOME</a>
+
+            <a href="allcollection.html">COLLECTION</a>
+            <a href="about.html">ABOUT</a>
+            <a href="login.html">ACCOUNT</a>
+            <a href="card.html">CART 🛒</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p>ALBERTO CLOCKS · Women COLLECTION</p>
+
+        <h1>Time Meets <span>Elegance.</span></h1>
+
+        <p class="description">
+            Discover timeless watches crafted for the modern gentleman.
+            Every second tells a story of style, confidence and luxury.
+        </p>
+    </section>
+
+    <section class="collection">
+        <div class="section-heading">
+            <h2>WOmen's Watches</h2>
+            <p>Elegance in every detail.</p>
+        </div>
+
+        <div class="watches">
+
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiUbs1fmZ7XKt1JMjXcT1Bo5eIpl_lGbCCri3BW2N2eA&s=10" alt="Classic men's watch">
+                <h3>The Heritage</h3>
+                <p>Classic Collection</p>
+                <span class="price">PKR 18,500</span>
+                <button class="button" onclick="addToCart(1)">
+    ADD TO CART
+</button>
+            </div>
+
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuhX8zW4quRZyvxtw3QkP9h6U7MYfFGXK0aiiBI6o44Q&s" alt="Luxury men's watch">
+                <h3>Midnight Noir</h3>
+                <p>Modern Collection</p>
+                <span class="price">PKR 22,000</span>
+                <button class="button" onclick="addToCart(2)">
+    ADD TO CART
+</button>
+            </div>
+
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2M6239bGZtHxEC_85Vp-SOntyo44eMl06yEbK88A0Og&s=10" alt="Elegant men's watch">
+                <h3>The Executive</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+               <button class="button" onclick="addToCart(3)">
+    ADD TO CART
+</button>
+            </div>
+<div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCCNSOoVjt4UaST-Dx_BR378UT0QGKaCiqRjE0tTzD-w&s=10" alt="Elegant men's watch">
+                <h3>The blabk</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+                <button class="button" onclick="addToCart(4)">
+    ADD TO CART
+</button>
+            </div>
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRduxZ1nJdm68HZd1oDkJGi4kkNR3LFST9dshxjs4zrjQ&s=10" alt="Elegant men's watch">
+                <h3>The silver</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+                <button class="button" onclick="addToCart(5)">
+    ADD TO CART
+</button>
+                  </div>
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtK0_xA5OC3rfinM1e2dYUQX1QlzPNdNNLun-wU_UZyg&s=10" alt="Elegant men's watch">
+                <h3>The Bugati</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+                <button class="button" onclick="addToCart(6)">
+    ADD TO CART
+</button>
+            </div>
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAN7x82Tgz17xsW4aNWrVJz7gmX3fM2pizAAJGP1wczg&s" alt="Elegant men's watch">
+                <h3>The Executive</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+               <button class="button" onclick="addToCart(7)">
+    ADD TO CART
+</button>
+            </div>
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ21ukvR020YT8gz5F6kz5WOaImwb27PuUm_eb2DDsslQ&s=10" alt="Elegant men's watch">
+                <h3>The Indesual</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+                <button class="button" onclick="addToCart(8)">
+    ADD TO CART
+</button>
+            </div>
+            
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4WXiZRZiDHOQMhzHZdiYE6lDRwK_d4FiM5posEjltIQ&s=10" alt="Elegant men's watch">
+                <h3>The Rolex</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+               <button class="button" onclick="addToCart(9)">
+    ADD TO CART
+</button>
+            </div>
+            <div class="watch-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2M6239bGZtHxEC_85Vp-SOntyo44eMl06yEbK88A0Og&s=10" alt="Elegant men's watch">
+                <h3>The Univers</h3>
+                <p>Executive Collection</p>
+                <span class="price">PKR 25,000</span>
+                <button class="button" onclick="addToCart(10)">
+    ADD TO CART
+</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        © 2026 ALBERTO CLOCKS · TIMELESS BY DESIGN
+    </footer>
+    <footer>
+    © 2026 ALBERTO CLOCKS · TIMELESS BY DESIGN
+</footer>
+
+<script>
+
+const menWatches = [
+    {
+        id: 1,
+        name: "The Heritage",
+        price: 18500,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNjn8tJ7RCeMqozJDwYK_qJZSoqXLNKNLFwpkkj4IPqg&s=10"
+    },
+    {
+        id: 2,
+        name: "Midnight Noir",
+        price: 22000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuYBf7cxPI0uQFWlKIRNMQ3tJRvQAr0kBsQeMjgTOpmQ&s=10"
+    },
+    {
+        id: 3,
+        name: "The Executive",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTh1rRM0l-hlxtfyl6mITKs5N5Dj6hrXcXAovRQAHgg&s=10"
+    },
+    {
+        id: 4,
+        name: "The Black",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0_qukzvLrMTtjT7tKSvOWsw9LXzEveu_CiPYvDdsGfQ&s"
+    },
+    {
+        id: 5,
+        name: "The Silver",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQztdfJMn5S28B4zKlQ5tYnTcqjQGXxNee9USbiRD05Tw&s=10"
+    },
+    {
+        id: 6,
+        name: "The Bugati",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1s1iOVgRbPc5jFc1z43DF1DXE6m9EByX3OR9zEmrCKw&s=10"
+    },
+    {
+        id: 7,
+        name: "The Executive II",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB_sWef9ezRY2e-kVjNE7XOjh3ipI2NLGz7XEaW9fHSQ&s=10"
+    },
+    {
+        id: 8,
+        name: "The Individual",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHy656zlsAv2zDyaCu4cUZwc_wMeAiJWqu7DuryJQFWw&s=10"
+    },
+    {
+        id: 9,
+        name: "The Rolex",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS20mGwMs38PK-GKN87dEfMySwhYhQIHzk3e_cEHySdEg&s=10"
+    },
+    {
+        id: 10,
+        name: "The Univers",
+        price: 25000,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYOTgcfWA3GhmFVWvdrJYhQI6OSuOHPb0dQ5Xhe7WbKQ&s=10"
+    }
+];
+
+function addToCart(id) {
+    const watch = menWatches.find(item => item.id === Number(id));
+
+    if (!watch) return;
+
+    let cart = [];
+
+    try {
+        cart = JSON.parse(localStorage.getItem("albertoCart")) || [];
+        if (!Array.isArray(cart)) cart = [];
+    } catch (error) {
+        cart = [];
+    }
+
+    const existing = cart.find(item => Number(item.id) === watch.id);
+
+    if (existing) {
+        existing.quantity = Number(existing.quantity || 1) + 1;
+    } else {
+        cart.push({
+            ...watch,
+            category: "Men's Watches",
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("albertoCart", JSON.stringify(cart));
+
+    // Update the Add to Cart button
+    const buttons = document.querySelectorAll(".watch-card .button");
+    const button = buttons[watch.id - 1];
+
+    if (button) {
+        const oldText = button.textContent;
+        button.textContent = "✓ ADDED TO CART";
+        button.style.background = "#8bc49a";
+        button.style.color = "#17251c";
+
+        setTimeout(() => {
+            button.textContent = oldText;
+            button.style.background = "";
+            button.style.color = "";
+        }, 1400);
+    }
+
+    // Count all items, including quantities
+    const count = cart.reduce(
+        (total, item) => total + Number(item.quantity || 1),
+        0
+    );
+
+    const cartLink = document.querySelector('nav a[href="cart.html"]');
+    if (cartLink) {
+        cartLink.textContent = `CART 🛒 (${count})`;
+    }
+
+    // Premium-style notification
+    let toast = document.getElementById("cartToast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "cartToast";
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = `✓ ${watch.name} added to your cart`;
+
+    Object.assign(toast.style, {
+        position: "fixed",
+        right: "25px",
+        bottom: "25px",
+        background: "#244b34",
+        color: "#ffffff",
+        padding: "16px 22px",
+        borderRadius: "8px",
+        boxShadow: "0 8px 25px #0002",
+        zIndex: "9999",
+        fontSize: "14px",
+        opacity: "1",
+        transition: "opacity 0.3s"
+    });
+
+    clearTimeout(window.cartToastTimer);
+    window.cartToastTimer = setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 2200);
+}
+
+// Show existing cart quantity when page opens
+(function updateCartCount() {
+    let cart = [];
+
+    try {
+        cart = JSON.parse(localStorage.getItem("albertoCart")) || [];
+    } catch (error) {
+        cart = [];
+    }
+
+    const count = cart.reduce(
+        (total, item) => total + Number(item.quantity || 1),
+        0
+    );
+
+    const cartLink = document.querySelector('nav a[href="cart.html"]');
+
+    if (cartLink) {
+        cartLink.textContent = `CART 🛒 (${count})`;
+    }
+})();
+
+</script>
+
+
+</body>
+</html>
+```

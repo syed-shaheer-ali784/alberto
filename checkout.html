@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALBERTO CLOCKS | Checkout</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #203729;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(255,255,255,.80), rgba(232,245,235,.88)),
+        url("https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px solid #d9e8dc;
+}
+
+.logo {
+    font-size: 25px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: #244b34;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #244b34;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #a18442;
+}
+
+.page-title {
+    text-align: center;
+    padding: 45px 15px 30px;
+}
+
+.page-title p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #66816c;
+    margin-bottom: 12px;
+}
+
+.page-title h1 {
+    font: normal clamp(34px, 5vw, 52px) Georgia, serif;
+}
+
+.page-title span {
+    color: #8caf93;
+}
+
+.checkout-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 70px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.panel {
+    padding: 28px;
+    border: 1px solid #d8e8da;
+    border-radius: 14px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 12px 35px #20372912;
+}
+
+.panel h2 {
+    font: normal 25px Georgia, serif;
+    margin-bottom: 24px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1dfd3;
+    border-radius: 7px;
+    outline: none;
+    background: #fbfdfb;
+    font: inherit;
+    color: #203729;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    border-color: #6c9d78;
+    box-shadow: 0 0 0 3px #8caf9325;
+}
+
+.field textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.payment-option {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid #d8e8da;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.payment-option input {
+    accent-color: #315e3e;
+}
+
+.payment-option strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.payment-option small {
+    color: #718073;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e4ede5;
+}
+
+.order-item img {
+    width: 65px;
+    height: 70px;
+    object-fit: contain;
+    background: #f2f8f3;
+    border-radius: 6px;
+}
+
+.order-item h3 {
+    font: normal 16px Georgia, serif;
+    margin: 5px 0;
+}
+
+.order-item p {
+    color: #718073;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.price {
+    font-weight: bold;
+    color: #856b34;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0;
+    font-size: 14px;
+}
+
+.total {
+    padding-top: 18px;
+    border-top: 1px solid #d8e8da;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.place-order {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 7px;
+    background: #244b34;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.place-order:hover {
+    background: #8caf93;
+    color: #183b26;
+    transform: translateY(-2px);
+}
+
+.notice {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #718073;
+    line-height: 1.7;
+}
+
+.empty {
+    padding: 20px 0;
+    line-height: 1.7;
+    color: #718073;
+}
+
+.empty a {
+    color: #244b34;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #718073;
+    font-size: 11px;
+    letter-spacing: 2px;
+    background: #ffffffc9;
+}
+
+@media(max-width: 800px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+}
+
+@media(max-width: 500px) {
+    .panel {
+        padding: 19px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">ALBERTO</a>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="about.html">ABOUT</a>
+        <a href="card.html">CART 🛒</a>
+    </nav>
+</header>
+
+<section class="page-title">
+    <p>ALBERTO CLOCKS · SECURE ORDER DETAILS</p>
+    <h1>Complete Your <span>Order.</span></h1>
+</section>
+
+<main class="checkout-container">
+
+    <section class="panel">
+        <h2>Delivery Information</h2>
+
+        <form id="checkoutForm">
+            <div class="form-row">
+                <div class="field">
+                    <label for="fullName">Full Name *</label>
+                    <input id="fullName" name="fullName" required
+                           autocomplete="name" placeholder="Your full name">
+                </div>
+
+                <div class="field">
+                    <label for="email">Email Address *</label>
+                    <input id="email" name="email" type="email" required
+                           autocomplete="email" placeholder="you@example.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="phone">Phone Number *</label>
+                    <input id="phone" name="phone" type="tel" required
+                           autocomplete="tel" placeholder="03XX XXXXXXX">
+                </div>
+
+                <div class="field">
+                    <label for="city">City *</label>
+                    <input id="city" name="city" required
+                           autocomplete="address-level2" placeholder="Your city">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="address">Complete Address *</label>
+                <textarea id="address" name="address" required
+                          autocomplete="street-address"
+                          placeholder="House, street, area and delivery details"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="deliveryType">Delivery Method *</label>
+                <select id="deliveryType" name="deliveryType" required>
+                    <option value="Courier Delivery">Courier Delivery</option>
+                    <option value="Store Pickup">Store Pickup</option>
+                </select>
+            </div>
+
+            <h2 style="margin-top:28px">Payment Method</h2>
+
+            <label class="payment-option">
+                <input type="radio" name="payment" value="Cash on Delivery" checked>
+                <span>
+                    <strong>Cash on Delivery</strong>
+                    <small>Pay when your order arrives</small>
+                </span>
+            </label>
+
+            <label class="payment-option">
+                <input type="radio" name="payment" value="Online Payment">
+                <span>
+                    <strong>Online Payment</strong>
+                    <small>Online payment gateway must be connected before accepting payments</small>
+                </span>
+            </label>
+
+            <button class="place-order" type="submit">
+                PLACE MY ORDER →
+            </button>
+
+            <p class="notice">
+                Please check your address and contact information before placing your order.
+            </p>
+        </form>
+    </section>
+
+    <aside class="panel">
+        <h2>Your Order</h2>
+
+        <div id="orderItems"></div>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">PKR 0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Delivery charges</span>
+            <span>Confirmed later</span>
+        </div>
+
+        <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">PKR 0</span>
+        </div>
+
+        <p class="notice">
+            Delivery charges will need to be confirmed. The total shown here excludes any unconfigured delivery fee.
+        </p>
+    </aside>
+
+</main>
+
+<footer>
+    © 2026 ALBERTO CLOCKS · TIMELESS BY DESIGN
+</footer>
+
+<script>
+function getCart() {
+    try {
+        const cart = JSON.parse(localStorage.getItem("albertoCart"));
+        return Array.isArray(cart) ? cart : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function formatMoney(amount) {
+    return "PKR " + Number(amount).toLocaleString("en-PK");
+}
+
+function displayOrder() {
+    const cart = getCart();
+    const container = document.getElementById("orderItems");
+    container.innerHTML = "";
+
+    let subtotal = 0;
+
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty">
+                Your cart is empty.<br>
+                <a href="allcollection.html">Go back to the collection</a>
+                and add a watch first.
+            </div>
+        `;
+    }
+
+    cart.forEach(item => {
+        const quantity = Math.max(1, Number(item.quantity) || 1);
+        const price = Number(item.price) || 0;
+        subtotal += price * quantity;
+
+        const row = document.createElement("div");
+        row.className = "order-item";
+
+        const img = document.createElement("img");
+        img.src = item.image || "";
+        img.alt = item.name || "ALBERTO watch";
+        img.onerror = function() {
+            this.style.visibility = "hidden";
+        };
+
+        const details = document.createElement("div");
+
+        const name = document.createElement("h3");
+        name.textContent = item.name || "ALBERTO Watch";
+
+        const qty = document.createElement("p");
+        qty.textContent = "Quantity: " + quantity;
+
+        const priceLabel = document.createElement("p");
+        priceLabel.className = "price";
+        priceLabel.textContent = formatMoney(price * quantity);
+
+        details.append(name, qty, priceLabel);
+        row.append(img, details);
+        container.appendChild(row);
+    });
+
+    document.getElementById("subtotal").textContent = formatMoney(subtotal);
+    document.getElementById("total").textContent = formatMoney(subtotal);
+}
+
+document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const cart = getCart();
+
+    if (cart.length === 0) {
+        alert("Your cart is empty. Please add a watch first.");
+        return;
+    }
+
+    const payment = document.querySelector('input[name="payment"]:checked').value;
+
+    if (payment === "Online Payment") {
+        alert("Online payment is not connected yet. Please select Cash on Delivery or connect a payment gateway first.");
+        return;
+    }
+
+    const formData = new FormData(this);
+
+    const order = {
+        orderNumber: "ALB-" + Date.now(),
+        customer: {
+            name: formData.get("fullName"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            city: formData.get("city"),
+            address: formData.get("address")
+        },
+        delivery: formData.get("deliveryType"),
+        payment: payment,
+        items: cart,
+        total: cart.reduce(
+            (sum, item) => sum +
+                (Number(item.price) || 0) *
+                Math.max(1, Number(item.quantity) || 1),
+            0
+        ),
+        status: "Pending"
+    };
+
+    // Demo only: saves this order in the current browser.
+    // It does not send the order to the shop or a server.
+    let orders = [];
+
+    try {
+        orders = JSON.parse(localStorage.getItem("albertoOrders")) || [];
+        if (!Array.isArray(orders)) orders = [];
+    } catch (error) {
+        orders = [];
+    }
+
+    orders.push(order);
+    localStorage.setItem("albertoOrders", JSON.stringify(orders));
+    localStorage.removeItem("albertoCart");
+
+    alert(
+        "Thank you, " + order.customer.name + "!\n" +
+        "Your demo order number is " + order.orderNumber + ".\n" +
+        "This order is saved only in this browser; the shop has not been notified."
+    );
+
+    window.location.href = "index.html";
+});
+
+displayOrder();
+</script>
+
+</body>
+</html>

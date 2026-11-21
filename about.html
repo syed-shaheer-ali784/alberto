@@ -1,0 +1,1171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story | ALBERTO CLOCKS</title>
+
+<style>
+:root {
+    --green: #b8e5c8;
+    --dark-green: #245c3b;
+    --light-green: #eff9f2;
+    --white: #ffffff;
+    --dark: #17241b;
+    --grey: #69766d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+video {
+    display: block;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 19px 7%;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #e0eee4;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--dark-green);
+}
+
+.logo small {
+    display: block;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 6px;
+    margin-top: 3px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 27px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 12px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.nav-links a:hover { color: var(--dark-green); }
+
+.nav-links .cart-link {
+    background: var(--green);
+    padding: 11px 16px;
+    border-radius: 25px;
+}
+
+/* HERO VIDEO */
+
+.hero {
+    min-height: 680px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 80px 9%;
+    color: white;
+    overflow: hidden;
+    isolation: isolate;
+    background: #10271b;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(8,25,15,.90),
+        rgba(8,25,15,.65) 48%,
+        rgba(8,25,15,.22)
+    );
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 780px;
+    animation: slideIn 1.1s ease both;
+}
+
+.eyebrow {
+    color: #bde9c9;
+    font-size: 12px;
+    letter-spacing: 6px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 86px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+}
+
+.hero h1 span { color: #bde9c9; }
+
+.hero p {
+    max-width: 600px;
+    color: #e5eee7;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 16px 30px;
+    background: #bde9c9;
+    color: #173e27;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    background: white;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px #0003;
+}
+
+/* SECTION LABELS */
+
+.section-label {
+    color: var(--dark-green);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+/* INTRO VIDEO */
+
+.intro {
+    padding: 110px 9%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: center;
+}
+
+.intro h2,
+.story-heading h2,
+.values-heading h2,
+.reviews-heading h2 {
+    font-size: clamp(32px, 4vw, 49px);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.intro h2 span,
+.story-heading h2 span {
+    color: var(--dark-green);
+}
+
+.intro p {
+    color: var(--grey);
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 18px;
+}
+
+.intro-image {
+    position: relative;
+    min-width: 0;
+}
+
+.intro-image video {
+    width: 100%;
+    height: 530px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 20px 20px 0 var(--green);
+    transition: .5s;
+}
+
+.intro-image:hover video { transform: translateY(-7px); }
+
+.image-caption {
+    position: absolute;
+    bottom: -20px;
+    left: -25px;
+    background: white;
+    padding: 20px 28px;
+    box-shadow: 0 10px 35px #0001;
+    border-left: 4px solid var(--dark-green);
+}
+
+.image-caption strong {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.image-caption span {
+    font-size: 12px;
+    color: var(--grey);
+    margin-top: 5px;
+    display: block;
+}
+
+/* STORY SECTION */
+
+.story {
+    padding: 100px 9%;
+    background: var(--light-green);
+}
+
+.story-heading {
+    max-width: 760px;
+    margin: 0 auto 65px;
+    text-align: center;
+}
+
+.story-heading p {
+    color: var(--grey);
+    line-height: 1.9;
+}
+
+.story-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 65px;
+    margin-bottom: 90px;
+}
+
+.story-row:last-child { margin-bottom: 0; }
+
+.story-row.reverse .story-photo { order: 2; }
+.story-row.reverse .story-text { order: 1; }
+
+.story-photo {
+    overflow: hidden;
+    border-radius: 5px;
+    background: #dcefe2;
+    min-width: 0;
+}
+
+.story-photo video {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    transition: transform .8s;
+}
+
+.story-photo:hover video { transform: scale(1.07); }
+
+.story-number {
+    font-size: 45px;
+    color: #a4d8b5;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.story-text h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.story-text p {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 2;
+    margin-bottom: 17px;
+}
+
+/* SECOND VIDEO BANNER */
+
+.watch-banner {
+    min-height: 460px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    color: white;
+    background: #10271b;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.banner-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.watch-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10,35,21,.72);
+    z-index: -1;
+}
+
+.banner-content {
+    max-width: 800px;
+}
+
+.banner-content h2 {
+    font-size: clamp(35px, 5vw, 65px);
+    margin-bottom: 22px;
+}
+
+.banner-content p {
+    color: #e3eee6;
+    line-height: 1.9;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* VALUES */
+
+.values { padding: 100px 7%; }
+
+.values-heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.value-card {
+    text-align: center;
+    padding: 45px 27px;
+    background: white;
+    border: 1px solid #e0eee4;
+    border-radius: 8px;
+    transition: .35s;
+}
+
+.value-card:hover {
+    transform: translateY(-9px);
+    background: var(--light-green);
+    box-shadow: 0 18px 40px #183e2512;
+}
+
+.value-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: var(--light-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 30px;
+}
+
+.value-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.value-card p {
+    color: var(--grey);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* CUSTOMER REVIEWS */
+
+.reviews {
+    padding: 100px 7%;
+    background: #f4faf6;
+}
+
+.reviews-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.reviews-heading p {
+    color: var(--grey);
+    line-height: 1.8;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.review-card {
+    background: white;
+    padding: 35px 28px;
+    border-radius: 8px;
+    border: 1px solid #e1eee5;
+    transition: .3s;
+}
+
+.review-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px #183e2510;
+}
+
+.stars {
+    color: #d2a83c;
+    letter-spacing: 4px;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.review-card blockquote {
+    color: #5c6a60;
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.reviewer-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--green);
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 900;
+}
+
+.reviewer strong {
+    font-size: 14px;
+    display: block;
+}
+
+.reviewer small {
+    display: block;
+    margin-top: 5px;
+    color: var(--grey);
+}
+
+/* FINAL CTA */
+
+.final-cta {
+    padding: 100px 20px;
+    text-align: center;
+    background: white;
+}
+
+.final-cta h2 {
+    font-size: clamp(32px, 5vw, 54px);
+    margin-bottom: 20px;
+}
+
+.final-cta p {
+    color: var(--grey);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.final-cta .primary-btn {
+    background: var(--dark-green);
+    color: white;
+}
+
+.final-cta .primary-btn:hover { background: #173e27; }
+
+/* FOOTER */
+
+footer {
+    padding: 55px 7% 25px;
+    background: #1f2020;
+    color: white;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-bottom: 40px;
+}
+
+.footer-brand {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.footer-description {
+    color: #c9dacf;
+    max-width: 350px;
+    line-height: 1.9;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+.footer-column h3 {
+    color: #bde9c9;
+    margin-bottom: 18px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 12px;
+    color: #e1eee5;
+    font-size: 13px;
+}
+
+.footer-column a:hover { color: white; }
+
+.footer-bottom {
+    border-top: 1px solid #ffffff25;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: #c9dacf;
+    font-size: 12px;
+}
+
+/* BACK TO TOP */
+
+.back-to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: var(--dark-green);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: .3s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+    .navbar {
+        padding: 16px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 70px 7%;
+    }
+
+    .intro,
+    .story-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .intro { padding: 75px 7%; }
+    .intro-image video { height: 400px; }
+    .story { padding: 75px 7%; }
+
+    .story-row.reverse .story-photo,
+    .story-row.reverse .story-text {
+        order: initial;
+    }
+
+    .story-photo video { height: 350px; }
+
+    .values-grid,
+    .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .logo { font-size: 21px; }
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 10px; }
+
+    .hero { min-height: 560px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero p { font-size: 15px; }
+
+    .image-caption { left: -5px; }
+
+    .values-grid,
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-photo video { height: 280px; }
+    .footer-top { flex-direction: column; }
+    .footer-links { gap: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header class="navbar">
+    <a href="index.html" class="logo">
+        ALBERTO
+        <small>C L O C K S</small>
+    </a>
+
+    <nav class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="allcollection.html">COLLECTION</a>
+        <a href="our-story.html">ABOUT</a>
+        <a href="signin.html">ACCOUNT</a>
+        <a href="card.html" class="cart-link">CART 🛒</a>
+    </nav>
+</header>
+
+<!-- HERO VIDEO -->
+<section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://www.pexels.com/download/video/8322275/" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+        <div class="eyebrow">OUR STORY • OUR JOURNEY</div>
+        <h1>Every Dream<br>Has a <span>Beginning.</span></h1>
+
+        <p>
+            Great things do not happen overnight. Behind every meaningful
+            creation lies a dream, countless challenges, patience, and the
+            courage to keep moving forward. Welcome to the story of
+            ALBERTO CLOCKS.
+        </p>
+
+        <a href="#our-story" class="primary-btn">DISCOVER OUR STORY</a>
+    </div>
+</section>
+
+<!-- INTRODUCTION VIDEO -->
+<section class="intro reveal">
+    <div class="intro-text">
+        <div class="section-label">MORE THAN A WATCH</div>
+        <h2>Time Is Precious.<br><span>So Are Your Dreams.</span></h2>
+
+        <p>
+            ALBERTO CLOCKS was imagined around a simple belief:
+            a watch should be more than something that tells time.
+            It should express personality, confidence, ambition,
+            and the memories that make life meaningful.
+        </p>
+
+        <p>
+            Every great journey begins with an idea. Sometimes that idea
+            starts small, with limited resources and a vision that others
+            may not yet understand. The important thing is to believe in
+            that vision enough to keep working towards it.
+        </p>
+
+        <p>
+            Our brand story represents the determination to build something
+            distinctive: a collection inspired by timeless design,
+            thoughtful details, and the elegance of simplicity.
+        </p>
+
+        <a href="allcollection.html" class="primary-btn">EXPLORE OUR WATCHES</a>
+    </div>
+
+    <div class="intro-image">
+        <video autoplay muted loop playsinline>
+            <source src="https://www.pexels.com/download/video/8321899/" type="video/mp4">
+        </video>
+
+        <div class="image-caption">
+            <strong>ALBERTO CLOCKS</strong>
+            <span>Designed to stand apart.</span>
+        </div>
+    </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story" id="our-story">
+
+    <div class="story-heading reveal">
+        <div class="section-label">THE JOURNEY</div>
+        <h2>From a Small Dream<br>to a <span>Greater Vision.</span></h2>
+        <p>
+            Behind every ambition is a journey. This is the spirit that
+            inspires the ALBERTO CLOCKS story: starting small, facing
+            challenges, learning from mistakes, and refusing to give up.
+        </p>
+    </div>
+
+    <!-- CHAPTER 1 VIDEO -->
+    <div class="story-row reveal">
+        <div class="story-photo">
+            <video autoplay muted loop playsinline>
+                <source src="https://www.pexels.com/download/video/37541790/" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="story-text">
+            <div class="story-number">01</div>
+            <h3>The Dream That Started It All</h3>
+            <p>
+                Every meaningful journey begins with a question:
+                what if we could create something of our own?
+                What if an idea that begins in a small corner could
+                grow into something people recognize and remember?
+            </p>
+            <p>
+                The inspiration behind ALBERTO CLOCKS comes from that
+                desire to create something special. Not simply another
+                product, but a brand with its own character, identity,
+                and commitment to timeless style.
+            </p>
+            <p>
+                At the beginning, the vision can feel bigger than the
+                resources available. But every large achievement starts
+                with one small step, followed by another.
+            </p>
+        </div>
+    </div>
+
+    <!-- CHAPTER 2 VIDEO -->
+    <div class="story-row reverse reveal">
+        <div class="story-photo">
+            <video autoplay muted loop playsinline>
+                <source src="https://www.pexels.com/download/video/8321905/" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="story-text">
+            <div class="story-number">02</div>
+            <h3>The Difficult Days</h3>
+            <p>
+                The road towards a dream is rarely easy. There are moments
+                of uncertainty, difficult decisions, mistakes, and days
+                when progress seems slower than expected.
+            </p>
+            <p>
+                Building a brand requires patience. Every detail matters:
+                the way a watch looks, how its design feels, the quality
+                customers expect, and the trust a business must earn.
+            </p>
+            <p>
+                Challenges can teach lessons that success alone cannot.
+                They remind us to stay focused, learn continuously, and
+                improve the work instead of abandoning the dream.
+            </p>
+        </div>
+    </div>
+
+    <!-- CHAPTER 3 VIDEO -->
+    <div class="story-row reveal">
+        <div class="story-photo">
+            <video autoplay muted loop playsinline>
+                <source src="https://www.pexels.com/download/video/8322276/" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="story-text">
+            <div class="story-number">03</div>
+            <h3>Turning Vision Into Design</h3>
+            <p>
+                A watch carries more than numbers and hands. Its dial,
+                shape, strap, finish, and small details work together
+                to create a complete expression of style.
+            </p>
+            <p>
+                ALBERTO CLOCKS draws inspiration from classic elegance
+                and modern confidence. Our collection brings together
+                different styles for different personalities, from
+                understated everyday designs to bold statement pieces.
+            </p>
+            <p>
+                The goal is to help every customer discover a timepiece
+                that feels right for their own journey and style.
+            </p>
+        </div>
+    </div>
+
+    <!-- CHAPTER 4 VIDEO -->
+    <div class="story-row reverse reveal">
+        <div class="story-photo">
+            <video autoplay muted loop playsinline>
+                <source src="https://media.istockphoto.com/id/820666484/video/watch-luxury-handheld.mp4?s=mp4-640x640-is&k=20&c=XJQTUHBWm_mEtPvXDIWhiSsTrpGGq-ct8sIS-xdAlp0=" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="story-text">
+            <div class="story-number">04</div>
+            <h3>Growing Through Every Challenge</h3>
+            <p>
+                Progress is not always measured by how quickly a brand
+                grows. Sometimes it is measured by the lessons learned,
+                the improvements made, and the willingness to begin again
+                when something does not work.
+            </p>
+            <p>
+                Every step forward brings a new responsibility:
+                to improve the experience, listen to customers, and
+                keep the original vision alive.
+            </p>
+            <p>
+                The journey continues with the belief that consistency,
+                creativity, and dedication can turn a simple idea into
+                something worth being proud of.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- VIDEO BANNER -->
+<section class="watch-banner">
+    <video class="banner-video" autoplay muted loop playsinline>
+        <source src="videos/watch.mp4" type="video/mp4">
+    </video>
+
+    <div class="banner-content reveal">
+        <div class="eyebrow">THE ALBERTO EXPERIENCE</div>
+        <h2>More Than Time.<br>A Statement of Style.</h2>
+
+        <p>
+            From everyday elegance to special occasions, discover designs
+            inspired by confidence, individuality, and timeless appeal.
+            Your next favourite timepiece may be waiting here.
+        </p>
+
+        <a href="gold.html" class="primary-btn">SHOP THE COLLECTION</a>
+    </div>
+</section>
+
+<!-- VALUES -->
+<section class="values reveal">
+    <div class="values-heading">
+        <div class="section-label">WHAT MATTERS TO US</div>
+        <h2>Our <span style="color:#245c3b">Values</span></h2>
+    </div>
+
+    <div class="values-grid">
+        <div class="value-card">
+            <div class="value-icon">⌚</div>
+            <h3>Timeless Style</h3>
+            <p>
+                We appreciate designs that look elegant today and continue
+                to feel special as trends change.
+            </p>
+        </div>
+
+        <div class="value-card">
+            <div class="value-icon">✦</div>
+            <h3>Attention to Detail</h3>
+            <p>
+                Small details help define a design. Thoughtful presentation
+                makes a meaningful difference.
+            </p>
+        </div>
+
+        <div class="value-card">
+            <div class="value-icon">♡</div>
+            <h3>Customer Trust</h3>
+            <p>
+                A lasting relationship begins with clear communication,
+                respectful service, and a commitment to improving.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+<section class="reviews">
+    <div class="reviews-heading reveal">
+        <div class="section-label">CUSTOMER VOICES</div>
+        <h2>Words That <span style="color:#245c3b">Matter.</span></h2>
+        <p>
+            Every customer's experience is an opportunity to learn,
+            improve, and do better.
+        </p>
+    </div>
+
+    <div class="reviews-grid">
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "I really like the elegant look of the watch designs.
+                The simple style makes them easy to pair with different outfits."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">A</div>
+                <div><strong>Ahmed</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "The collection has a classy look. I like having different
+                styles to explore for a special occasion."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">S</div>
+                <div><strong>Sarah</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "The watch designs have a modern appearance and are easy
+                to compare while exploring the collection."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">H</div>
+                <div><strong>Hamza</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "The presentation feels clean and stylish. I enjoyed
+                exploring the different watch designs."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">K</div>
+                <div><strong>Khan</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "A classy collection with different styles to choose
+                from for everyday wear and special occasions."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">U</div>
+                <div><strong>Usman</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+
+        <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+                "The overall look is modern and elegant. The collection
+                makes browsing different styles enjoyable."
+            </blockquote>
+            <div class="reviewer">
+                <div class="reviewer-avatar">A</div>
+                <div><strong>Ahmad</strong><small>Sample feedback</small></div>
+            </div>
+        </article>
+    </div>
+
+    <p style="text-align:center;color:#78847b;font-size:12px;margin-top:28px">
+        Note: These are sample review cards. Replace them with genuine
+        customer feedback before publishing.
+    </p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+    <div class="section-label">YOUR JOURNEY. YOUR TIME.</div>
+    <h2>Make Every Second Count.</h2>
+    <p>
+        Discover a timepiece that reflects your personality
+        and accompanies you through life's memorable moments.
+    </p>
+    <a href="premium-collection.html" class="primary-btn">
+        EXPLORE THE COLLECTION
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <div class="footer-brand">ALBERTO CLOCKS</div>
+            <p class="footer-description">
+                Inspired by timeless style, personal ambition,
+                and the moments that make every journey unique.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>EXPLORE</h3>
+                <a href="index.html">Home</a>
+                <a href="allcollection.html">Collection</a>
+                <a href="our-story.html">About Us</a>
+                <a href="premium-collection.html">Premium Collection</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>YOUR ACCOUNT</h3>
+                <a href="signin.html">Sign In</a>
+                <a href="carD.html">Shopping Cart</a>
+                <a href="checkout.html">Checkout</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>INFORMATION</h3>
+                <a href="delivery.html">Delivery Information</a>
+                <a href="our-story.html">Our Story</a>
+                <a href="allcollection.html">Shop Watches</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> ALBERTO CLOCKS</span>
+        <span>TIMELESS STYLE. LASTING IMPRESSION.</span>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" type="button"
+        aria-label="Back to top">↑</button>
+
+<script>
+/* Reveal animations */
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
+} else {
+    revealItems.forEach(item => item.classList.add("visible"));
+}
+
+/* Footer year */
+document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+
+/* Back to top */
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    backToTop.classList.toggle("show", window.scrollY > 450);
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* Keep videos playing silently */
+document.querySelectorAll("video").forEach(video => {
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+
+    video.play().catch(() => {
+        /* Browser may require user interaction before playback. */
+    });
+});
+</script>
+
+</body>
+</html>
